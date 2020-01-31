@@ -9,7 +9,7 @@ public class Mooovment : MonoBehaviour
     public GameObject Crosshair;
     bool resetCrosshairPosition = true;
 
-
+    public GameObject currentProjectile;
 
 
     Vector3 cursorInitialPosition = new Vector3();

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5146457771720276389}
   - component: {fileID: 3434922351618297584}
+  - component: {fileID: 3021173919165442050}
   m_Layer: 0
   m_Name: Mooocca
   m_TagString: Untagged
@@ -81,3 +82,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3021173919165442050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 132019569883140394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35288877e2beece49b1c68d466ebc226, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
