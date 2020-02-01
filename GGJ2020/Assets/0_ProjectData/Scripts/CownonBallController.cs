@@ -50,7 +50,6 @@ public class CownonBallController : MonoBehaviour
 
         if(hole != null)
         {
-            HolesManager.Instance.CowReachedHole(hole);
             if (!hole.busy)
                 this.GetComponent<SpriteRenderer>().sprite = cownonBallStatistics.StuckSprite[Random.Range(0, cownonBallStatistics.flyingSprite.Length)];
             else
@@ -58,6 +57,7 @@ public class CownonBallController : MonoBehaviour
                 this.GetComponent<Rigidbody2D>().simulated = true;
                 this.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(1, 5), Random.Range(1, 5)));
             }
+            HolesManager.Instance.CowReachedHole(hole);
         }
         else
         {

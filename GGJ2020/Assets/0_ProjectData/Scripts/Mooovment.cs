@@ -29,17 +29,6 @@ public class Mooovment : MonoBehaviour
         return worldPosition;
     }
 
-    private void Awake()
-    {
-        
-    }
-
-    void OnVaccaShot(Vector3 crosshairPosition)
-    {
-
-
-    }
-
     void Update()
     {
         //Debug.Log("Mouse x: " + Input.GetAxis("HorizontalCursorMooovement") + 
@@ -60,7 +49,7 @@ public class Mooovment : MonoBehaviour
             //Debug.Log("Target position: " + targetPosition + "viewport botLeft corner: " + Camera.main.ViewportToWorldPoint(Vector3.forward)
             //    + " Target to viewport pos: " + Camera.main.WorldToViewportPoint(targetPosition));
 
-            Debug.Log("Clamped position: " + ClampVectorInScreen(targetPosition));
+            //Debug.Log("Clamped position: " + ClampVectorInScreen(targetPosition));
 
             // process position, clamp between screen borderzzz, apply mucca shake!
 
@@ -76,7 +65,7 @@ public class Mooovment : MonoBehaviour
             CownonBallController cowThrown = Instantiate(currentProjectile);
             cowThrown.ShootCow(this.transform.position, CrosshairPivot.transform.position, currentProjectileStats, HolesManager.Instance.currentHole);
 
-
+            Debug.Log("The hole hit is busy: " + HolesManager.Instance.currentHole.busy);
             CrosshairPivot.transform.localPosition = Vector3.zero;
 
             Debug.Log("<color=yellow>Mucca is being shot! </color>");

@@ -275,7 +275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smallHoleRadius: 0.4
   bigHoleRadius: 0.8
-  smallHoleChance: 0.731
+  smallHoleChance: 1
   initialHoleAmount: 5
   holes: []
   currentHole:
@@ -591,6 +591,7 @@ MonoBehaviour:
   mooovementSpeed: 0.01
   CrosshairPivot: {fileID: 582151366}
   currentProjectile: {fileID: 0}
+  currentProjectileStats: {fileID: 0}
 --- !u!4 &1828996104
 Transform:
   m_ObjectHideFlags: 0
