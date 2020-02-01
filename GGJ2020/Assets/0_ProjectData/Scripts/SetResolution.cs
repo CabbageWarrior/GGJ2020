@@ -7,6 +7,7 @@ public class SetResolution : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
+     
         // Use this for initialization
         
             // set the desired aspect ratio (the values in this example are
