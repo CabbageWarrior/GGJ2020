@@ -273,13 +273,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9441d074cc8ff5a4e94a7e743ba1c018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  holes:
-  - position: {x: -2.5760703, y: 2.6393647, z: 0}
-    radius: 1
+  smallHoleRadius: 0.4
+  bigHoleRadius: 0.8
+  smallHoleChance: 0.731
+  initialHoleAmount: 5
+  holes: []
+  currentHole:
+    position: {x: 0, y: 0, z: 0}
+    radius: 0
     busy: 0
-  - position: {x: 3.512946, y: 2.7541194, z: 0}
-    radius: 1
-    busy: 0
+  smallCenter: {x: 0, y: 1.33}
+  smallSize: {x: 4.81, y: 6.8}
+  bigCenter: {x: 0, y: 1.34}
+  bigSize: {x: 3.94, y: 6.09}
 --- !u!4 &880934751
 Transform:
   m_ObjectHideFlags: 0
