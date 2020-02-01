@@ -590,8 +590,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mooovementSpeed: 0.01
   CrosshairPivot: {fileID: 582151366}
-  currentProjectile: {fileID: 0}
-  currentProjectileStats: {fileID: 0}
+  currentProjectile: {fileID: 3844637229563445983, guid: 544966ff888a6da489fb61e3b3b2eb1f,
+    type: 3}
+  currentProjectileStats: {fileID: 11400000, guid: 8d5f293e71640eb48881c86e917692ca,
+    type: 2}
 --- !u!4 &1828996104
 Transform:
   m_ObjectHideFlags: 0
