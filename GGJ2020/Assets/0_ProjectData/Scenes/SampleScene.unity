@@ -513,7 +513,8 @@ MonoBehaviour:
   bigHoleRadius: 0.8
   smallHoleChance: 1
   initialHoleAmount: 5
-  holePrefab: {fileID: 0}
+  holePrefab: {fileID: 3425132282148931129, guid: e8f5d6c292ee02e4b8675f1e3a3cb57b,
+    type: 3}
   holes: []
   currentHole:
     position: {x: 0, y: 0, z: 0}
