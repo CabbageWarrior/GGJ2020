@@ -6,59 +6,61 @@ public class Mooovment : MonoBehaviour
 {
     public float mooovementSpeed = 5.0f;
     public GameObject CrosshairPivot;
-    bool resetCrosshairPosition = true;
 
     public GameObject currentProjectile;
 
-    Vector3 cursorInitialPosition = new Vector3();
 
-    bool isAiming = false;
+    private Vector3 ClampVectorInScreen(Vector3 position)
+    {
+        Vector3 viewportPosition = Camera.main.WorldToViewportPoint(position);
+
+        float gretaVerticalViewportPosition = Camera.main.WorldToViewportPoint(transform.position).y;
+
+        viewportPosition.x = Mathf.Clamp01(viewportPosition.x);
+        viewportPosition.y = Mathf.Clamp(viewportPosition.y, gretaVerticalViewportPosition, 1);
+
+
+        Vector3 worldPosition = Camera.main.ViewportToWorldPoint(viewportPosition);
+        worldPosition.z = 0;
+
+        return worldPosition;
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButton(0))
+        //Debug.Log("Mouse x: " + Input.GetAxis("HorizontalCursorMooovement") + 
+        //    " y: " + Input.GetAxis("HorizontalCursorMooovement"));
+
+        if(Input.GetMouseButtonDown(0))
         {
-            if (resetCrosshairPosition)
-            {
-                resetCrosshairPosition = false;
-                CrosshairPivot.transform.localPosition = new Vector3();
-                //CrosshairPivot.transform.rotation = Quaternion.identity;
-                cursorInitialPosition = Input.mousePosition;
-
-            }
-
-            Vector3 resultVector = cursorInitialPosition - Input.mousePosition;
-            if (resultVector.y > 0)
-            {
-                isAiming = true;
-                CrosshairPivot.transform.localPosition = (cursorInitialPosition - Input.mousePosition) * mooovementSpeed;
-            }
-            else
-            {
-                isAiming = false;
-                CrosshairPivot.transform.localPosition = new Vector3();
-            }
-
+            CrosshairPivot.transform.position = Vector3.zero;
         }
-
-        if (!Input.GetMouseButton(0))
+        if(Input.GetMouseButton(0))
         {
-            if (!resetCrosshairPosition)
-            {
-                resetCrosshairPosition = true;
+            Vector3 mouseInput = new Vector3(Input.GetAxis("HorizontalCursorMooovement"), 
+                                             Input.GetAxis("VerticalCursorMooovement"), 0);
 
-                if (isAiming)
-                {
-                    //TODO: shoot behaviour
-                    Debug.Log("Mooo");
+            Vector3 currentCrosshairPivotPosition = CrosshairPivot.transform.position;
+            Vector3 targetPosition = currentCrosshairPivotPosition - mouseInput * mooovementSpeed;
 
-                    isAiming = false;
-                }
+            //Debug.Log("Target position: " + targetPosition + "viewport botLeft corner: " + Camera.main.ViewportToWorldPoint(Vector3.forward)
+            //    + " Target to viewport pos: " + Camera.main.WorldToViewportPoint(targetPosition));
 
-                CrosshairPivot.transform.localPosition = new Vector3();
-                //CrosshairPivot.transform.rotation = Quaternion.identity;
-            }
+            Debug.Log("Clamped position: " + ClampVectorInScreen(targetPosition));
+
+            // process position, clamp between screen borderzzz, apply mucca shake!
+
+            targetPosition = ClampVectorInScreen(targetPosition);
+
+            CrosshairPivot.transform.position = targetPosition;
+        }
+        if(Input.GetMouseButtonUp(0))
+        {
+            // shoot cow lol
+            CrosshairPivot.transform.position = Vector3.zero;
+
+            Debug.Log("MOOOOOOOOOOOOOOOOOOOH!1");
         }
     }
 }
