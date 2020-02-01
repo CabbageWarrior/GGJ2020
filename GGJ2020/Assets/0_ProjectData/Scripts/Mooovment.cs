@@ -63,7 +63,17 @@ public class Mooovment : MonoBehaviour
             OnCowShot?.Invoke(CrosshairPivot.transform.position);
             
             CownonBallController cowThrown = Instantiate(currentProjectile);
-            cowThrown.ShootCow(this.transform.position, CrosshairPivot.transform.position, currentProjectileStats, HolesManager.Instance.currentHole);
+
+            if(HolesManager.Instance.currentHole != null)
+            {
+                cowThrown.ShootCow(this.transform.position, HolesManager.Instance.currentHole.position,
+                    currentProjectileStats, HolesManager.Instance.currentHole);
+            }
+            else
+            {
+                cowThrown.ShootCow(this.transform.position, CrosshairPivot.transform.position, 
+                    currentProjectileStats, HolesManager.Instance.currentHole);
+            }
 
 
             CrosshairPivot.transform.localPosition = Vector3.zero;

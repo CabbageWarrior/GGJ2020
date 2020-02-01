@@ -11,7 +11,7 @@ public class HolesManager : MonoBehaviour
     public float smallHoleChance;
     public int initialHoleAmount = 5;
 
-
+    public GameObject holePrefab;
     public List<Hole> holes;
 
     public Hole currentHole;
@@ -52,12 +52,7 @@ public class HolesManager : MonoBehaviour
                                         UnityEngine.Random.Range(min.y, max.y), 0);
         }
 
-        Hole newHole = new Hole();
-        newHole.radius = radius;
-        newHole.position = spawnPosition;
-        newHole.busy = false;
-
-        holes.Add(newHole);
+        AddNewHole(spawnPosition);
     }
 
     private bool HoleOverlapsWithExistingHoles(Vector3 position, float radius)
@@ -81,7 +76,7 @@ public class HolesManager : MonoBehaviour
             Vector3 holePosition = hole.position;
             float distance = Vector3.Distance(holePosition, cursorPosition);
 
-            if(distance < hole.radius)
+            if(distance < hole.radius * 2)
             {
                 currentHole = hole;
                 return;
@@ -96,7 +91,11 @@ public class HolesManager : MonoBehaviour
         Hole h = new Hole();
         h.busy = false;
         h.position = position;
-        h.radius = 1; // todo
+        h.radius = smallHoleRadius;
+        h.sprite = Instantiate(holePrefab, position, 
+            Quaternion.Euler(0, 0, UnityEngine.Random.Range(0, 360)));
+
+        holes.Add(h);
     }
 
     public void CowReachedHole(Hole hole)
@@ -135,4 +134,5 @@ public class Hole
     public float radius;
     public bool busy;
     public CownonBallController occowpied;
+    public GameObject sprite;
 }
