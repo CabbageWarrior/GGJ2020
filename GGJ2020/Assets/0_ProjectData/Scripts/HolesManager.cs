@@ -9,10 +9,12 @@ public class HolesManager : MonoBehaviour
     public float bigHoleRadius;
     [Range(0,1)]
     public float smallHoleChance;
-    public int initialHoleAmount = 5;
 
     public GameObject holePrefab;
     public List<Hole> holes;
+
+    public List<int> holesAmountToSpawnPerStage;
+    public float delayBetweenRounds;
 
     public Hole currentHole;
 
@@ -23,15 +25,62 @@ public class HolesManager : MonoBehaviour
     public Vector2 bigCenter;
     public Vector2 bigSize;
 
+    int currentStageIndex = 0;
+
     private void Awake()
     {
         Mooovment.OnCowShot += OnCowShot;
         Instance = this;
 
-        for(int i = 0; i < initialHoleAmount; i++)
+        EnholeTheHoesErrIMeanHoles(currentStageIndex++);
+    }
+
+    public void EnholeTheHoesErrIMeanHoles(int stageIndex)
+    {
+        stageIndex = Mathf.Clamp(stageIndex, 0, holesAmountToSpawnPerStage.Count-1);
+
+        Debug.Log("Stage index: " + stageIndex);
+
+        for (int i = 0; i < holesAmountToSpawnPerStage[stageIndex]; i++)
         {
             SpawnHole();
         }
+    }
+
+    public void CheckIfEveryHoleIsMucched()
+    {
+        bool everyHole = true;
+        foreach(var hole in holes)
+        {
+            if(!hole.busy)
+            {
+                everyHole = false;
+                break;
+            }
+        }
+
+        if(everyHole)
+        {
+            SpariscTheHoles();
+        }
+    }
+
+    public void SpariscTheHoles()
+    {
+        foreach(var hole in holes)
+        {
+            hole.instance.KillHole();
+        }
+
+        holes.Clear();
+        StartCoroutine(StartNewHoleRoundAfterDelay());
+    }
+
+    IEnumerator StartNewHoleRoundAfterDelay()
+    {
+        yield return new WaitForSeconds(delayBetweenRounds);
+
+        EnholeTheHoesErrIMeanHoles(currentStageIndex++);
     }
 
     private void SpawnHole()
@@ -95,6 +144,7 @@ public class HolesManager : MonoBehaviour
         h.sprite = Instantiate(holePrefab, position, 
             Quaternion.Euler(0, 0, UnityEngine.Random.Range(0, 360)));
         h.sprite.transform.localScale = Vector3.one * smallHoleRadius;
+        h.instance = h.sprite.GetComponent<HoleInstance>();
         holes.Add(h);
     }
 
@@ -102,6 +152,8 @@ public class HolesManager : MonoBehaviour
     {
         // toggle hole
         hole.busy = !hole.busy;
+
+        CheckIfEveryHoleIsMucched();
     }
 
     private void OnDrawGizmos()
@@ -135,4 +187,5 @@ public class Hole
     public bool busy;
     public CownonBallController occowpied;
     public GameObject sprite;
+    public HoleInstance instance;
 }

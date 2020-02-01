@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2019275654611067048}
   - component: {fileID: 851658479685970322}
+  - component: {fileID: -6007691231234022407}
   m_Layer: 0
   m_Name: Hole
   m_TagString: Untagged
@@ -81,3 +82,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-6007691231234022407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3425132282148931129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7b9b3ccece2e474ca2f4b44ab123673, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cow: {fileID: 0}
+  hole: {fileID: 851658479685970322}

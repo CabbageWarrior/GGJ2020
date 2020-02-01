@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -274,7 +274,7 @@ PrefabInstance:
     - target: {fileID: 1835162206353982239, guid: 4eb9c00aa7820d74592c60813c4caf8c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1835162206353982239, guid: 4eb9c00aa7820d74592c60813c4caf8c,
         type: 3}
@@ -642,16 +642,18 @@ MonoBehaviour:
   smallHoleRadius: 0.2
   bigHoleRadius: 0.8
   smallHoleChance: 1
-  initialHoleAmount: 5
   holePrefab: {fileID: 3425132282148931129, guid: e8f5d6c292ee02e4b8675f1e3a3cb57b,
     type: 3}
   holes: []
+  holesAmountToSpawnPerStage: 020000000400000006000000
+  delayBetweenRounds: 2
   currentHole:
     position: {x: 0, y: 0, z: 0}
     radius: 0
     busy: 0
     occowpied: {fileID: 0}
     sprite: {fileID: 0}
+    instance: {fileID: 0}
   smallCenter: {x: 0, y: 1.33}
   smallSize: {x: 4.81, y: 6.8}
   bigCenter: {x: 0, y: 1.34}

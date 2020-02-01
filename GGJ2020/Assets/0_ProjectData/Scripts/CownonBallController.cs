@@ -56,6 +56,7 @@ public class CownonBallController : MonoBehaviour
             {
                 this.GetComponent<SpriteRenderer>().sprite = cownonBallStatistics.StuckSprite[Random.Range(0, cownonBallStatistics.StuckSprite.Length)];
                 hole.occowpied = this;
+                hole.instance.cow = this.GetComponent<SpriteRenderer>();
                 this.GetComponent<SpriteRenderer>().sortingOrder = -10;
             }
             else
