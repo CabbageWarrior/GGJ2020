@@ -12,6 +12,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35288877e2beece49b1c68d466ebc226, type: 3}
   m_Name: Mooocca
   m_EditorClassIdentifier: 
-  shakeTime: 0
-  shakeDuration: 0
-  shakeIntensity: 0
+  shakeTime: {x: 1, y: 3}
+  shakeDuration: {x: 1, y: 3}
+  shakeIntensity: {x: 1, y: 3}
+  initialScale: 0.4
+  finalScale: 0.1
+  movementCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  scaleCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  flyingSprite:
+  - {fileID: 21300000, guid: 74d5c851b4834d64d963340dd134f6ab, type: 3}
+  - {fileID: 21300000, guid: 375fab8644ea1264eabe89c91077f2b7, type: 3}
+  - {fileID: 21300000, guid: 4f3caf45f75ab7d47b313ecc88e19ff4, type: 3}
+  StuckSprite:
+  - {fileID: 21300000, guid: 69cea8212c6e4834fa3f767cb1c33c2a, type: 3}
+  - {fileID: 21300000, guid: 0e01fae3c0d80dc40ae9b62536f33943, type: 3}
+  - {fileID: 21300000, guid: 7a6926037c2adc54099597bedab43572, type: 3}

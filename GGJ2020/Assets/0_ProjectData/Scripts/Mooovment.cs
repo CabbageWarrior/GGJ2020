@@ -8,9 +8,11 @@ public class Mooovment : MonoBehaviour
     public float mooovementSpeed = 5.0f;
     public GameObject CrosshairPivot;
 
-    public GameObject currentProjectile;
+    public CownonBallController currentProjectile;
+    public CownonBallStatistics currentProjectileStats;
 
     public static Action<Vector3> OnCowShot;
+    public static Action OnCowIngropped;
 
     private Vector3 ClampVectorInScreen(Vector3 position)
     {
@@ -25,6 +27,17 @@ public class Mooovment : MonoBehaviour
         worldPosition.z = 0;
 
         return worldPosition;
+    }
+
+    private void Awake()
+    {
+        
+    }
+
+    void OnVaccaShot(Vector3 crosshairPosition)
+    {
+
+
     }
 
     void Update()
@@ -58,8 +71,11 @@ public class Mooovment : MonoBehaviour
         else if(Input.GetMouseButtonUp(0))
         {
             // shoot cow lol
-            
             OnCowShot?.Invoke(CrosshairPivot.transform.position);
+            
+            CownonBallController cowThrown = Instantiate(currentProjectile);
+            cowThrown.ShootCow(this.transform.position, CrosshairPivot.transform.position, currentProjectileStats, HolesManager.Instance.currentHole);
+
 
             CrosshairPivot.transform.localPosition = Vector3.zero;
 
