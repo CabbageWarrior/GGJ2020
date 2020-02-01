@@ -38,6 +38,9 @@ public class TimerManager : MonoBehaviour
         initialOutlineColor = outline.effectColor;
         finalOutlineColor = outline.effectColor;
         finalOutlineColor.a = 0;
+
+        outline.effectColor = finalOutlineColor;
+        points.color = finalPointsColor;
     }
 
     public void StartTimer()
