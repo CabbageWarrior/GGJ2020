@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5146457771720276389}
   - component: {fileID: 3434922351618297584}
-  - component: {fileID: 3021173919165442050}
+  - component: {fileID: 3844637229563445983}
   m_Layer: 0
   m_Name: Mooocca
   m_TagString: Untagged
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 132019569883140394}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.08582026, y: 1.8659079, z: -3.442845}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 6.84, y: 3.25, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3021173919165442050
+--- !u!114 &3844637229563445983
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,6 +91,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 132019569883140394}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35288877e2beece49b1c68d466ebc226, type: 3}
+  m_Script: {fileID: 11500000, guid: dbec833350fe08c40a8d70b32a540ee2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cownonBallStatistics: {fileID: 11400000, guid: 8d5f293e71640eb48881c86e917692ca,
+    type: 2}
+  cownonballAnimator: {fileID: 0}
