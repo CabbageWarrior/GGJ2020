@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CownonBallCowntroller : MonoBehaviour
+public class CownonBallController : MonoBehaviour
 {
     public CownonBallStatistics cownonBallStatistics;
     [Space]
