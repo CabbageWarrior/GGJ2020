@@ -34,7 +34,7 @@ public class Mooovment : MonoBehaviour
 
         if(Input.GetMouseButtonDown(0))
         {
-            CrosshairPivot.transform.position = Vector3.zero;
+            CrosshairPivot.transform.localPosition = Vector3.zero;
         }
         if(Input.GetMouseButton(0))
         {
@@ -58,7 +58,7 @@ public class Mooovment : MonoBehaviour
         if(Input.GetMouseButtonUp(0))
         {
             // shoot cow lol
-            CrosshairPivot.transform.position = Vector3.zero;
+            CrosshairPivot.transform.localPosition = Vector3.zero;
 
             Debug.Log("MOOOOOOOOOOOOOOOOOOOH!1");
         }
