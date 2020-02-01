@@ -15,6 +15,7 @@ MonoBehaviour:
   shakeTime: {x: 1, y: 3}
   shakeDuration: {x: 1, y: 3}
   shakeIntensity: {x: 1, y: 3}
+  rotationSpeed: {x: -700, y: 700}
   initialScale: 0.4
   finalScale: 0.1
   movementCurve:
@@ -23,20 +24,29 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
+      inSlope: 4.1712937
+      outSlope: 4.1712937
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.03636508
+    - serializedVersion: 3
+      time: 0.72365546
+      value: 1.2827443
+      inSlope: -0.31873548
+      outSlope: -0.31873548
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.27333334
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 1
-      outSlope: 1
+      inSlope: -1.0231586
+      outSlope: -1.0231586
       tangentMode: 34
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.33333334
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2

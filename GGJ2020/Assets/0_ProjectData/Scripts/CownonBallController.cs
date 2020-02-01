@@ -15,13 +15,13 @@ public class CownonBallController : MonoBehaviour
 
     private void Update()
     {
-        if(transform.position.y < -5)
+        if (transform.position.y < -5)
         {
             Destroy(this.gameObject);
         }
     }
 
-    public void ShootCow(Vector3 startingPosition, Vector3 targetPosition, 
+    public void ShootCow(Vector3 startingPosition, Vector3 targetPosition,
         CownonBallStatistics stats, Hole hole)
     {
         cownonBallStatistics = stats;
@@ -34,8 +34,8 @@ public class CownonBallController : MonoBehaviour
     {
         float timer = 0;
         float time = 1;
-
-        while(timer < time)
+        float rotationSpeed = Random.Range(cownonBallStatistics.rotationSpeed.x, cownonBallStatistics.rotationSpeed.y);
+        while (timer < time)
         {
             timer += Time.deltaTime;
 
@@ -45,13 +45,15 @@ public class CownonBallController : MonoBehaviour
             transform.localScale = Vector3.Lerp(cownonBallStatistics.initialScale * Vector3.one, cownonBallStatistics.finalScale * Vector3.one,
                 cownonBallStatistics.scaleCurve.Evaluate(timer / time));
 
+            transform.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime);
+
             yield return null;
         }
 
-        if(hole != null)
+        if (hole != null)
         {
             if (!hole.busy)
-            { 
+            {
                 this.GetComponent<SpriteRenderer>().sprite = cownonBallStatistics.StuckSprite[Random.Range(0, cownonBallStatistics.StuckSprite.Length)];
                 hole.occowpied = this;
             }
@@ -59,7 +61,9 @@ public class CownonBallController : MonoBehaviour
             {
                 this.GetComponent<Rigidbody2D>().simulated = true;
                 this.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-200, 200), Random.Range(-200, 200)));
+                this.GetComponent<Rigidbody2D>().AddTorque(rotationSpeed);
                 hole.occowpied.GetComponent<Rigidbody2D>().simulated = true;
+                hole.occowpied.GetComponent<Rigidbody2D>().AddTorque(rotationSpeed);
                 hole.occowpied.GetComponent<SpriteRenderer>().sprite = cownonBallStatistics.flyingSprite[Random.Range(0, cownonBallStatistics.flyingSprite.Length)];
                 hole.occowpied.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-200, 200), Random.Range(-200, 200)));
                 hole.occowpied = null;
@@ -69,7 +73,7 @@ public class CownonBallController : MonoBehaviour
         else
         {
             HolesManager.Instance.AddNewHole(targetPosition);
-            this.GetComponent<Rigidbody2D>().simulated = true; 
+            this.GetComponent<Rigidbody2D>().simulated = true;
         }
     }
 }

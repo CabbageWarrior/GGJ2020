@@ -10,6 +10,7 @@ public class CownonBallStatistics : ScriptableObject
     public Vector2 shakeDuration;
     public Vector2 shakeIntensity;
 
+    public Vector2 rotationSpeed;
     public float initialScale;
     public float finalScale;
 
