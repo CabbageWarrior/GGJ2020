@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Mooocca_Easy
   m_EditorClassIdentifier: 
   minShake: 0
-  maxShake: 0.2
+  maxShake: 0.3
   loopTime: 0.2
   shakeCurve:
     serializedVersion: 2
