@@ -12,9 +12,78 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35288877e2beece49b1c68d466ebc226, type: 3}
   m_Name: Mooocca
   m_EditorClassIdentifier: 
-  shakeTime: {x: 1, y: 3}
-  shakeDuration: {x: 1, y: 3}
-  shakeIntensity: {x: 1, y: 3}
+  minShake: 0.03
+  maxShake: 0.5
+  loopTime: 4
+  shakeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2.437984
+      outSlope: 2.437984
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.117290586
+      value: 0.28595257
+      inSlope: 0.5792276
+      outSlope: 0.5792276
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.27089214
+      value: 0.089414954
+      inSlope: 0.05148679
+      outSlope: 0.05148679
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.43685663
+      value: 0.31886125
+      inSlope: 0.29065794
+      outSlope: 0.29065794
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.67810583
+      value: 0.12557566
+      inSlope: 0.06312698
+      outSlope: 0.06312698
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.8399765
+      value: 0.27570105
+      inSlope: -0.39771897
+      outSlope: -0.39771897
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -1.7228783
+      outSlope: -1.7228783
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   rotationSpeed: {x: -700, y: 700}
   initialScale: 0.4
   finalScale: 0.21

@@ -6,9 +6,11 @@ using UnityEngine;
 public class CownonBallStatistics : ScriptableObject
 {
     [Space]
-    public Vector2 shakeTime;
-    public Vector2 shakeDuration;
-    public Vector2 shakeIntensity;
+    public float minShake;
+    public float maxShake;
+    public float loopTime;
+
+    public AnimationCurve shakeCurve;
 
     public Vector2 rotationSpeed;
     public float initialScale;

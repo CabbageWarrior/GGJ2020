@@ -23,7 +23,7 @@ public class Mooovment : MonoBehaviour
         float gretaVerticalViewportPosition = Camera.main.WorldToViewportPoint(transform.position).y;
 
         viewportPosition.x = Mathf.Clamp01(viewportPosition.x);
-        viewportPosition.y = Mathf.Clamp(viewportPosition.y, gretaVerticalViewportPosition, 1);
+        viewportPosition.y = Mathf.Clamp(viewportPosition.y, gretaVerticalViewportPosition + 0.13f, 1);
 
         Vector3 worldPosition = Camera.main.ViewportToWorldPoint(viewportPosition);
         worldPosition.z = 0;
@@ -36,6 +36,18 @@ public class Mooovment : MonoBehaviour
         OnCowIngropped?.Invoke();
     }
 
+    private Vector3 ApplyShake(Vector3 position, float t)
+    {
+        float shakeAmount = Mathf.Lerp(currentProjectileStats.minShake,
+            currentProjectileStats.maxShake, currentProjectileStats.shakeCurve.Evaluate(t));
+
+        Vector3 offset = UnityEngine.Random.insideUnitCircle * shakeAmount;
+
+        return position + offset;
+    }
+
+    float shakeTimer = 0;
+
     void Update()
     {
         //Debug.Log("Mouse x: " + Input.GetAxis("HorizontalCursorMooovement") + 
@@ -45,7 +57,7 @@ public class Mooovment : MonoBehaviour
         {
             CrosshairPivot.transform.localPosition = Vector3.zero;
             gretaAnimator.Play("Aiming");
-
+            shakeTimer = 0;
         }
         else if (Input.GetMouseButton(0) && (gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("Aiming")
                 || gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("CowScalcing")))
@@ -62,6 +74,8 @@ public class Mooovment : MonoBehaviour
             //Debug.Log("Clamped position: " + ClampVectorInScreen(targetPosition));
 
             // process position, clamp between screen borderzzz, apply mucca shake!
+            shakeTimer += Time.deltaTime;
+            targetPosition = ApplyShake(targetPosition, (shakeTimer / currentProjectileStats.loopTime) % 1);
 
             targetPosition = ClampVectorInScreen(targetPosition);
 
