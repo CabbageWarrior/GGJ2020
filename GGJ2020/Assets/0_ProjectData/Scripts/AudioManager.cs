@@ -12,6 +12,11 @@ public class AudioManager : MonoBehaviour
     public AudioClip[] music;
     public AudioClip[] sfx;
     public AudioClip[] cowSound;
+    [Space]
+    public AudioSource[] musicAudioSources = null;
+    public AudioSource[] sfxAudioSources = null;
+    public AudioSource[] cowsAudioSources = null;
+
 
     private void Awake()
     {
@@ -25,16 +30,24 @@ public class AudioManager : MonoBehaviour
 
     public void PlayMusic(int audio)
     {
-        source.PlayOneShot(music[audio]);
+        //source.PlayOneShot(music[audio]);
+        musicAudioSources[audio].Play();
     }
 
-    public void PlaySfx(int audio, float volume = 1)
+    public void PlaySfx(int audio)
     {
-        source.PlayOneShot(sfx[audio], volume);
+        PlaySfx(audio, 1);
+    }
+    public void PlaySfx(int audio, float volume)
+    {
+        //source.PlayOneShot(sfx[audio], volume);
+        sfxAudioSources[audio].volume = volume;
+        sfxAudioSources[audio].Play();
     }
 
     public void PlayCowSound(int audio)
     {
-        source.PlayOneShot(cowSound[audio]);
+        //source.PlayOneShot(cowSound[audio]);
+        cowsAudioSources[audio].Play();
     }
 }
