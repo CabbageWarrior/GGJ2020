@@ -7,8 +7,7 @@ public class HolesManager : MonoBehaviour
 {
     public Hole[] holes;
 
-    public Action<Vector3, bool> OnHoleFound;
-    public Action<Vector3> OnHoleMissed;
+    public Hole currentHole;
 
     public static HolesManager Instance { get; set; }
 
@@ -27,12 +26,12 @@ public class HolesManager : MonoBehaviour
 
             if(distance < hole.radius)
             {
-                OnHoleFound?.Invoke(holePosition, hole.busy);
+                currentHole = hole;
                 return;
             }
         }
 
-        OnHoleMissed?.Invoke(cursorPosition);
+        currentHole = null;
     }
 
     public void AddNewHole(Vector3 position)
