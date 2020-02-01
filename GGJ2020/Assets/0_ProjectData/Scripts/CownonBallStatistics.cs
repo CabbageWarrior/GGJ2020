@@ -8,4 +8,7 @@ public class CownonBallStatistics : ScriptableObject
     public float shakeTime;
     public float shakeDuration;
     public float shakeIntensity;
+
+    [Space]
+    public Animator cownonballAnmator;
 }
