@@ -11,5 +11,9 @@ public class CownonBallStatistics : ScriptableObject
     public Vector2 shakeIntensity;
 
     [Space]
+    public AnimationCurve movementCurve;
+    public AnimationCurve scaleCurve;
+
+    [Space]
     public Animator cownonballAnimator;
 }

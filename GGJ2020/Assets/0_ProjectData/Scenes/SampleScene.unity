@@ -274,7 +274,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holes:
-  - transform: {fileID: 1914057578}
+  - position: {x: -2.5760703, y: 2.6393647, z: 0}
+    radius: 1
+    busy: 0
+  - position: {x: 3.512946, y: 2.7541194, z: 0}
     radius: 1
     busy: 0
 --- !u!4 &880934751

@@ -10,16 +10,19 @@ public class HolesManager : MonoBehaviour
     public Action<Vector3, bool> OnHoleFound;
     public Action<Vector3> OnHoleMissed;
 
+    public static HolesManager Instance { get; set; }
+
     private void Awake()
     {
         Mooovment.OnCowShot += OnCowShot;
+        Instance = this;
     }
 
     private void OnCowShot(Vector3 cursorPosition)
     {
         foreach(var hole in holes)
         {
-            Vector3 holePosition = hole.transform.position;
+            Vector3 holePosition = hole.position;
             float distance = Vector3.Distance(holePosition, cursorPosition);
 
             if(distance < hole.radius)
@@ -32,6 +35,20 @@ public class HolesManager : MonoBehaviour
         OnHoleMissed?.Invoke(cursorPosition);
     }
 
+    public void AddNewHole(Vector3 position)
+    {
+        Hole h = new Hole();
+        h.busy = false;
+        h.position = position;
+        h.radius = 1; // todo
+    }
+
+    public void CowReachedHole(Hole hole)
+    {
+        // toggle hole
+        hole.busy = !hole.busy;
+    }
+
     private void OnDrawGizmos()
     {
         if (holes == null)
@@ -41,10 +58,10 @@ public class HolesManager : MonoBehaviour
 
         foreach(var hole in holes)
         {
-            if (hole.transform == null)
+            if (hole.position == null)
                 continue;
 
-            Gizmos.DrawWireSphere(hole.transform.position, hole.radius);
+            Gizmos.DrawWireSphere(hole.position, hole.radius);
         }
     }
 }
@@ -52,7 +69,7 @@ public class HolesManager : MonoBehaviour
 [System.Serializable]
 public class Hole
 {
-    public Transform transform;
+    public Vector3 position;
     public float radius;
     public bool busy;
 }
