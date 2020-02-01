@@ -10,28 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35288877e2beece49b1c68d466ebc226, type: 3}
-  m_Name: Mooocca
+  m_Name: Mooocca_Easy
   m_EditorClassIdentifier: 
-  minShake: 0.03
-  maxShake: 0.5
-  loopTime: 4
+  minShake: 0
+  maxShake: 0.2
+  loopTime: 0.2
   shakeCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 2.437984
-      outSlope: 2.437984
+      inSlope: 0.22612575
+      outSlope: 0.22612575
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.117290586
-      value: 0.28595257
-      inSlope: 0.5792276
-      outSlope: 0.5792276
+      time: 0.16729364
+      value: 0.0378294
+      inSlope: 0.36203152
+      outSlope: 0.36203152
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -39,8 +39,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0.27089214
       value: 0.089414954
-      inSlope: 0.05148679
-      outSlope: 0.05148679
+      inSlope: 0.94021976
+      outSlope: 0.94021976
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334

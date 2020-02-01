@@ -38,10 +38,17 @@ public class Mooovment : MonoBehaviour
 
     private Vector3 ApplyShake(Vector3 position, float t)
     {
+        float curveT = currentProjectileStats.shakeCurve.Evaluate(t);
+
         float shakeAmount = Mathf.Lerp(currentProjectileStats.minShake,
-            currentProjectileStats.maxShake, currentProjectileStats.shakeCurve.Evaluate(t));
+            currentProjectileStats.maxShake, curveT);
 
         Vector3 offset = UnityEngine.Random.insideUnitCircle * shakeAmount;
+
+        if(curveT > 0.25f && !gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("CowScalcing"))
+        {
+            gretaAnimator.Play("CowScalcing");
+        }
 
         return position + offset;
     }
