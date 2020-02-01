@@ -5,7 +5,7 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     private static AudioManager instance;
-    private static AudioManager Instance { get { return instance; } }
+    public static AudioManager Instance { get { return instance; } }
 
     private AudioSource source;
 
@@ -28,9 +28,9 @@ public class AudioManager : MonoBehaviour
         source.PlayOneShot(music[audio]);
     }
 
-    public void PlaySfx(int audio)
+    public void PlaySfx(int audio, float volume = 1)
     {
-        source.PlayOneShot(sfx[audio]);
+        source.PlayOneShot(sfx[audio], volume);
     }
 
     public void PlayCowSound(int audio)

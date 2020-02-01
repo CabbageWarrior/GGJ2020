@@ -64,6 +64,7 @@ public class Mooovment : MonoBehaviour
         {
             CrosshairPivot.transform.localPosition = Vector3.zero;
             gretaAnimator.Play("Aiming");
+            AudioManager.Instance.PlaySfx(1);
             shakeTimer = 0;
         }
         else if (Input.GetMouseButton(0) && (gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("Aiming")
@@ -93,7 +94,6 @@ public class Mooovment : MonoBehaviour
         {
             // shoot cow lol
             OnCowShot?.Invoke(CrosshairPivot.transform.position);
-
             CownonBallController cowThrown = Instantiate(currentProjectile);
 
             if (HolesManager.Instance.currentHole != null)
@@ -111,6 +111,8 @@ public class Mooovment : MonoBehaviour
             CrosshairPivot.transform.localPosition = Vector3.zero;
 
             gretaAnimator.Play("Throwing");
+            AudioManager.Instance.PlaySfx(2);
+            AudioManager.Instance.PlaySfx(9, 0.2f);
             OnCowIngropped?.Invoke();
             movingCow.Play();
 
