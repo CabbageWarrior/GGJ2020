@@ -15,7 +15,7 @@ public class CownonBallController : MonoBehaviour
 
     private void Update()
     {
-        if(transform.position.y < -20)
+        if(transform.position.y < -5)
         {
             Destroy(this.gameObject);
         }
@@ -39,7 +39,7 @@ public class CownonBallController : MonoBehaviour
         {
             timer += Time.deltaTime;
 
-            transform.position = Vector3.Lerp(startingPosition, targetPosition,
+            transform.position = Vector3.LerpUnclamped(startingPosition, targetPosition,
                 cownonBallStatistics.movementCurve.Evaluate(timer / time));
 
             transform.localScale = Vector3.Lerp(cownonBallStatistics.initialScale * Vector3.one, cownonBallStatistics.finalScale * Vector3.one,
@@ -51,11 +51,18 @@ public class CownonBallController : MonoBehaviour
         if(hole != null)
         {
             if (!hole.busy)
-                this.GetComponent<SpriteRenderer>().sprite = cownonBallStatistics.StuckSprite[Random.Range(0, cownonBallStatistics.flyingSprite.Length)];
+            { 
+                this.GetComponent<SpriteRenderer>().sprite = cownonBallStatistics.StuckSprite[Random.Range(0, cownonBallStatistics.StuckSprite.Length)];
+                hole.occowpied = this;
+            }
             else
             {
                 this.GetComponent<Rigidbody2D>().simulated = true;
-                this.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(1, 5), Random.Range(1, 5)));
+                this.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-200, 200), Random.Range(-200, 200)));
+                hole.occowpied.GetComponent<Rigidbody2D>().simulated = true;
+                hole.occowpied.GetComponent<SpriteRenderer>().sprite = cownonBallStatistics.flyingSprite[Random.Range(0, cownonBallStatistics.flyingSprite.Length)];
+                hole.occowpied.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-200, 200), Random.Range(-200, 200)));
+                hole.occowpied = null;
             }
             HolesManager.Instance.CowReachedHole(hole);
         }

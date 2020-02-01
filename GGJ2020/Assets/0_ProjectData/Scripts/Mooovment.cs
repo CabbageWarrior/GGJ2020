@@ -65,7 +65,7 @@ public class Mooovment : MonoBehaviour
             CownonBallController cowThrown = Instantiate(currentProjectile);
             cowThrown.ShootCow(this.transform.position, CrosshairPivot.transform.position, currentProjectileStats, HolesManager.Instance.currentHole);
 
-            Debug.Log("The hole hit is busy: " + HolesManager.Instance.currentHole.busy);
+
             CrosshairPivot.transform.localPosition = Vector3.zero;
 
             Debug.Log("<color=yellow>Mucca is being shot! </color>");

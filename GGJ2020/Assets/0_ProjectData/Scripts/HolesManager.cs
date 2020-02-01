@@ -134,4 +134,5 @@ public class Hole
     public Vector3 position;
     public float radius;
     public bool busy;
+    public CownonBallController occowpied;
 }
