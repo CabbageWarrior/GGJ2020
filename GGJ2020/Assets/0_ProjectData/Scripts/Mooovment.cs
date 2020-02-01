@@ -45,13 +45,10 @@ public class Mooovment : MonoBehaviour
 
         Vector3 offset = UnityEngine.Random.insideUnitCircle * shakeAmount;
 
-        if(curveT > 0.25f && !gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("ReverseAiming") && !gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("CowScalcing"))        
-            gretaAnimator.SetFloat("Blend", 0.25f);
-        
-
-        if(curveT < 0.25f)
-            gretaAnimator.SetFloat("Blend", 0.0f);
-        
+        if(curveT > 0.25f && !gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("ReverseAiming") && !gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("CowScalcing"))
+        {
+            gretaAnimator.Play("ReverseAiming");
+        }
 
         return position + offset;
     }
