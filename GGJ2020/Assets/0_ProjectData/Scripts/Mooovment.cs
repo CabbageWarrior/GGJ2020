@@ -43,6 +43,11 @@ public class Mooovment : MonoBehaviour
 
         Vector3 offset = UnityEngine.Random.insideUnitCircle * shakeAmount;
 
+        if(shakeAmount > 0.09f && !gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("CowScalcing"))
+        {
+            gretaAnimator.Play("CowScalcing");
+        }
+
         return position + offset;
     }
 
