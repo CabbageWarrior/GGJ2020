@@ -829,6 +829,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1828996104}
   - component: {fileID: 1828996102}
+  - component: {fileID: 1828996103}
   m_Layer: 0
   m_Name: PlayerPawn
   m_TagString: Untagged
@@ -856,6 +857,21 @@ MonoBehaviour:
     type: 3}
   currentProjectileStats: {fileID: 11400000, guid: 8d5f293e71640eb48881c86e917692ca,
     type: 2}
+--- !u!114 &1828996103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1828996101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c36a080c3af7c04b8c73be217ba21cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CownonBallStatistics:
+  - {fileID: 11400000, guid: 8d5f293e71640eb48881c86e917692ca, type: 2}
+  greta: {fileID: 1828996102}
 --- !u!4 &1828996104
 Transform:
   m_ObjectHideFlags: 0

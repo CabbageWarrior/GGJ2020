@@ -31,6 +31,11 @@ public class Mooovment : MonoBehaviour
         return worldPosition;
     }
 
+    private void Start()
+    {
+        OnCowIngropped?.Invoke();
+    }
+
     void Update()
     {
         //Debug.Log("Mouse x: " + Input.GetAxis("HorizontalCursorMooovement") + 
@@ -85,6 +90,7 @@ public class Mooovment : MonoBehaviour
             CrosshairPivot.transform.localPosition = Vector3.zero;
 
             gretaAnimator.Play("Throwing");
+            OnCowIngropped?.Invoke();
             movingCow.Play();
 
             Debug.Log("<color=yellow>Mucca is being shot! </color>");
