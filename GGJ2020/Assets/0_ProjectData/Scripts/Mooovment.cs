@@ -35,7 +35,6 @@ public class Mooovment : MonoBehaviour
     {
         OnCowIngropped?.Invoke();
     }
-
     private Vector3 ApplyShake(Vector3 position, float t)
     {
         float curveT = currentProjectileStats.shakeCurve.Evaluate(t);
@@ -66,6 +65,9 @@ public class Mooovment : MonoBehaviour
             gretaAnimator.Play("Aiming");
             AudioManager.Instance.PlaySfx(1);
             shakeTimer = 0;
+
+            if(!TimerManager.GAME_OVER)
+                TimerManager.Instance.StartTimer();
         }
         else if (Input.GetMouseButton(0) && (gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("Aiming")
                 || gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("CowScalcing") || gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("ReverseAiming")))
