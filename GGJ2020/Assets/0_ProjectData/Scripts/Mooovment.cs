@@ -36,15 +36,16 @@ public class Mooovment : MonoBehaviour
         //Debug.Log("Mouse x: " + Input.GetAxis("HorizontalCursorMooovement") + 
         //    " y: " + Input.GetAxis("HorizontalCursorMooovement"));
 
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
         {
             CrosshairPivot.transform.localPosition = Vector3.zero;
             gretaAnimator.Play("Aiming");
 
         }
-        else if(Input.GetMouseButton(0))
+        else if (Input.GetMouseButton(0) && (gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("Aiming")
+                || gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("CowScalcing")))
         {
-            Vector3 mouseInput = new Vector3(Input.GetAxis("HorizontalCursorMooovement"), 
+            Vector3 mouseInput = new Vector3(Input.GetAxis("HorizontalCursorMooovement"),
                                              Input.GetAxis("VerticalCursorMooovement"), 0);
 
             Vector3 currentCrosshairPivotPosition = CrosshairPivot.transform.position;
@@ -61,21 +62,22 @@ public class Mooovment : MonoBehaviour
 
             CrosshairPivot.transform.position = targetPosition;
         }
-        else if(Input.GetMouseButtonUp(0))
+        else if (Input.GetMouseButtonUp(0) && (gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("Aiming")
+                || gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("CowScalcing")))
         {
             // shoot cow lol
             OnCowShot?.Invoke(CrosshairPivot.transform.position);
-            
+
             CownonBallController cowThrown = Instantiate(currentProjectile);
 
-            if(HolesManager.Instance.currentHole != null)
+            if (HolesManager.Instance.currentHole != null)
             {
                 cowThrown.ShootCow(this.transform.position, HolesManager.Instance.currentHole.position,
                     currentProjectileStats, HolesManager.Instance.currentHole);
             }
             else
             {
-                cowThrown.ShootCow(this.transform.position, CrosshairPivot.transform.position, 
+                cowThrown.ShootCow(this.transform.position, CrosshairPivot.transform.position,
                     currentProjectileStats, HolesManager.Instance.currentHole);
             }
 
