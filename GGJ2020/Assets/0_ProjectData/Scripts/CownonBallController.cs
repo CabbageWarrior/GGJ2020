@@ -56,15 +56,18 @@ public class CownonBallController : MonoBehaviour
             {
                 this.GetComponent<SpriteRenderer>().sprite = cownonBallStatistics.StuckSprite[Random.Range(0, cownonBallStatistics.StuckSprite.Length)];
                 hole.occowpied = this;
+                this.GetComponent<SpriteRenderer>().sortingOrder = -10;
             }
             else
             {
                 this.GetComponent<Rigidbody2D>().simulated = true;
                 this.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-200, 200), Random.Range(-200, 200)));
                 this.GetComponent<Rigidbody2D>().AddTorque(rotationSpeed);
+                this.GetComponent<SpriteRenderer>().sortingOrder = -10;
                 hole.occowpied.GetComponent<Rigidbody2D>().simulated = true;
                 hole.occowpied.GetComponent<Rigidbody2D>().AddTorque(rotationSpeed);
                 hole.occowpied.GetComponent<SpriteRenderer>().sprite = cownonBallStatistics.flyingSprite[Random.Range(0, cownonBallStatistics.flyingSprite.Length)];
+                hole.occowpied.GetComponent<SpriteRenderer>().sortingOrder = -10;
                 hole.occowpied.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-200, 200), Random.Range(-200, 200)));
                 hole.occowpied = null;
             }
