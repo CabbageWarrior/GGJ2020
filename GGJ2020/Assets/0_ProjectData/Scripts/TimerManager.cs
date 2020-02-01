@@ -27,6 +27,8 @@ public class TimerManager : MonoBehaviour
     private Color initialOutlineColor;
     private Color finalOutlineColor;
 
+    static int currentPoints;
+
     private void Awake()
     {
         Instance = this;
@@ -41,6 +43,7 @@ public class TimerManager : MonoBehaviour
 
         outline.effectColor = finalOutlineColor;
         points.color = finalPointsColor;
+        currentPoints = 0;
     }
 
     public void StartTimer()
@@ -62,6 +65,23 @@ public class TimerManager : MonoBehaviour
             StopCoroutine(co);
         }
         co = StartCoroutine(PointsCoroutine());
+    }
+
+    public static void AddPoint(int value = 1)
+    {
+        currentPoints+= value;
+    }
+
+    public static void RemovePoint()
+    {
+        currentPoints--;
+    }
+
+    //call then the last screen is up
+    public static void SavePoints()
+    {
+        PlayerPrefs.SetFloat("HighScore", currentPoints);
+        PlayerPrefs.Save();
     }
 
     IEnumerator PointsCoroutine()

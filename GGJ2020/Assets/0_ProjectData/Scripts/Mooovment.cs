@@ -63,7 +63,7 @@ public class Mooovment : MonoBehaviour
         {
             CrosshairPivot.transform.localPosition = Vector3.zero;
             gretaAnimator.Play("Aiming");
-            AudioManager.Instance.PlaySfx(1);
+            //AudioManager.Instance.PlaySfx(1);
             shakeTimer = 0;
 
             if(!TimerManager.GAME_OVER)
