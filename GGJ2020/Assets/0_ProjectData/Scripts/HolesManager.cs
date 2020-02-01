@@ -94,7 +94,7 @@ public class HolesManager : MonoBehaviour
         h.radius = smallHoleRadius;
         h.sprite = Instantiate(holePrefab, position, 
             Quaternion.Euler(0, 0, UnityEngine.Random.Range(0, 360)));
-
+        h.sprite.transform.localScale = Vector3.one * smallHoleRadius;
         holes.Add(h);
     }
 
