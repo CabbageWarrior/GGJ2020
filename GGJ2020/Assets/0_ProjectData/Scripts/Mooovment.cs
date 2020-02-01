@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ public class Mooovment : MonoBehaviour
 
     public GameObject currentProjectile;
 
+    public static Action<Vector3> OnCowShot;
 
     private Vector3 ClampVectorInScreen(Vector3 position)
     {
@@ -19,14 +21,12 @@ public class Mooovment : MonoBehaviour
         viewportPosition.x = Mathf.Clamp01(viewportPosition.x);
         viewportPosition.y = Mathf.Clamp(viewportPosition.y, gretaVerticalViewportPosition, 1);
 
-
         Vector3 worldPosition = Camera.main.ViewportToWorldPoint(viewportPosition);
         worldPosition.z = 0;
 
         return worldPosition;
     }
 
-    // Update is called once per frame
     void Update()
     {
         //Debug.Log("Mouse x: " + Input.GetAxis("HorizontalCursorMooovement") + 
@@ -58,9 +58,12 @@ public class Mooovment : MonoBehaviour
         if(Input.GetMouseButtonUp(0))
         {
             // shoot cow lol
+            
+            OnCowShot?.Invoke(CrosshairPivot.transform.position);
+
             CrosshairPivot.transform.localPosition = Vector3.zero;
 
-            Debug.Log("MOOOOOOOOOOOOOOOOOOOH!1");
+            Debug.Log("<color=yellow>Mucca is being shot! </color>");
         }
     }
 }
