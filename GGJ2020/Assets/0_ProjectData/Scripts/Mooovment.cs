@@ -38,10 +38,17 @@ public class Mooovment : MonoBehaviour
 
     private Vector3 ApplyShake(Vector3 position, float t)
     {
+        float curveT = currentProjectileStats.shakeCurve.Evaluate(t);
+
         float shakeAmount = Mathf.Lerp(currentProjectileStats.minShake,
-            currentProjectileStats.maxShake, currentProjectileStats.shakeCurve.Evaluate(t));
+            currentProjectileStats.maxShake, curveT);
 
         Vector3 offset = UnityEngine.Random.insideUnitCircle * shakeAmount;
+
+        if(curveT > 0.25f && !gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("ReverseAiming") && !gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("CowScalcing"))
+        {
+            gretaAnimator.Play("ReverseAiming");
+        }
 
         return position + offset;
     }
@@ -60,7 +67,7 @@ public class Mooovment : MonoBehaviour
             shakeTimer = 0;
         }
         else if (Input.GetMouseButton(0) && (gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("Aiming")
-                || gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("CowScalcing")))
+                || gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("CowScalcing") || gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("ReverseAiming")))
         {
             Vector3 mouseInput = new Vector3(Input.GetAxis("HorizontalCursorMooovement"),
                                              Input.GetAxis("VerticalCursorMooovement"), 0);
@@ -82,7 +89,7 @@ public class Mooovment : MonoBehaviour
             CrosshairPivot.transform.position = targetPosition;
         }
         else if (Input.GetMouseButtonUp(0) && (gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("Aiming")
-                || gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("CowScalcing")))
+                || gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("CowScalcing") || gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("ReverseAiming")))
         {
             // shoot cow lol
             OnCowShot?.Invoke(CrosshairPivot.transform.position);
