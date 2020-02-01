@@ -17,7 +17,7 @@ MonoBehaviour:
   shakeIntensity: {x: 1, y: 3}
   rotationSpeed: {x: -700, y: 700}
   initialScale: 0.4
-  finalScale: 0.1
+  finalScale: 0.21
   movementCurve:
     serializedVersion: 2
     m_Curve:
