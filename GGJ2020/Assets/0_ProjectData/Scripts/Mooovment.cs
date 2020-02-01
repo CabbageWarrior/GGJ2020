@@ -32,7 +32,8 @@ public class Mooovment : MonoBehaviour
             if (resultVector.y > 0)
             {
                 isAiming = true;
-                CrosshairPivot.transform.localPosition = (cursorInitialPosition - Input.mousePosition) * mooovementSpeed;
+                if (IsCrosshairInScreen())
+                    CrosshairPivot.transform.localPosition = CrosshairPosition();
             }
             else
             {
@@ -61,4 +62,26 @@ public class Mooovment : MonoBehaviour
             }
         }
     }
+
+    Vector3 CrosshairPosition()
+    {
+        return (cursorInitialPosition - Input.mousePosition) * mooovementSpeed;
+    }
+    
+    bool IsCrosshairInScreen()
+    {
+        Debug.Log("point viewport Y: " + Camera.main.WorldToViewportPoint(CrosshairPosition()).y);
+        Debug.Log("point viewport X: " + Camera.main.WorldToViewportPoint(CrosshairPosition()).x);
+        
+        if(Camera.main.WorldToViewportPoint(CrosshairPosition()).x > 1 ||
+            Camera.main.WorldToViewportPoint(CrosshairPosition()).x < 0 ||
+            Camera.main.WorldToViewportPoint(CrosshairPosition()).y > 1 ||
+            Camera.main.WorldToViewportPoint(CrosshairPosition()).y < 0)
+        {
+
+            return false;
+        }
+        return true;
+    }
+
 }
