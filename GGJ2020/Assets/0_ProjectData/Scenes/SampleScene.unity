@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -788,7 +788,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 97a23e2e17b1a2444908fe22d2b13c84, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -850,6 +850,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mooovementSpeed: 0.01
   CrosshairPivot: {fileID: 582151366}
+  movingCow: {fileID: 206235792}
+  gretaAnimator: {fileID: 1747556554}
   currentProjectile: {fileID: 3844637229563445983, guid: 544966ff888a6da489fb61e3b3b2eb1f,
     type: 3}
   currentProjectileStats: {fileID: 11400000, guid: 8d5f293e71640eb48881c86e917692ca,

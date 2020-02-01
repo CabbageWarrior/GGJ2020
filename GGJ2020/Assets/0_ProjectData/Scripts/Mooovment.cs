@@ -7,6 +7,8 @@ public class Mooovment : MonoBehaviour
 {
     public float mooovementSpeed = 5.0f;
     public GameObject CrosshairPivot;
+    public Animation movingCow;
+    public Animator gretaAnimator;
 
     public CownonBallController currentProjectile;
     public CownonBallStatistics currentProjectileStats;
@@ -37,6 +39,8 @@ public class Mooovment : MonoBehaviour
         if(Input.GetMouseButtonDown(0))
         {
             CrosshairPivot.transform.localPosition = Vector3.zero;
+            gretaAnimator.Play("Aiming");
+
         }
         else if(Input.GetMouseButton(0))
         {
@@ -77,6 +81,9 @@ public class Mooovment : MonoBehaviour
 
 
             CrosshairPivot.transform.localPosition = Vector3.zero;
+
+            gretaAnimator.Play("Throwing");
+            movingCow.Play();
 
             Debug.Log("<color=yellow>Mucca is being shot! </color>");
         }
