@@ -14,6 +14,7 @@ public class PauseController : MonoBehaviour
     {
         Instance = this;
     }
+    
     private void Start()
     {
         endGamePanel.SetActive(false);
@@ -40,7 +41,7 @@ public class PauseController : MonoBehaviour
     public void Replay()
     {
         fadePanelsController.OnClose = () => {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(1, LoadSceneMode.Single);
         };
         fadePanelsController.Close();
     }

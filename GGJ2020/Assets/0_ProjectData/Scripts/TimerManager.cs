@@ -36,6 +36,7 @@ public class TimerManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        GAME_OVER = false;
         timer.text = "" + (int)gameTime;
         initialPointsColor = timeBonus.color;
         finalPointsColor = initialPointsColor;
@@ -102,6 +103,7 @@ public class TimerManager : MonoBehaviour
         {
             endScreenScoreText.text = "New High Score!!!";
             SavePoints();
+            GAME_OVER = false;
         }
         else
         {
