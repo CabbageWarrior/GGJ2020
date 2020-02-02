@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -833,6 +833,17 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[6].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 1835162205555134687, guid: 4eb9c00aa7820d74592c60813c4caf8c,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 703eba8a0805ba14682e3d51629158f1,
+        type: 3}
+    - target: {fileID: 1835162205555134687, guid: 4eb9c00aa7820d74592c60813c4caf8c,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 1835162206353982227, guid: 4eb9c00aa7820d74592c60813c4caf8c,
         type: 3}
       propertyPath: m_Name
@@ -1529,6 +1540,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 647046232}
+  - component: {fileID: 647046233}
   m_Layer: 0
   m_Name: GameFinishWrapper
   m_TagString: Untagged
@@ -1551,6 +1563,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &647046233
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 647046231}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 93c48cea89d989f4ba0d16142e29df63, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &650617135 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1835162205555134687, guid: 4eb9c00aa7820d74592c60813c4caf8c,
@@ -1763,7 +1794,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 16.010014, y: 111}
+  m_AnchoredPosition: {x: 16.01001, y: 111}
   m_SizeDelta: {x: -110.37997, y: 297.83}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &744745929
