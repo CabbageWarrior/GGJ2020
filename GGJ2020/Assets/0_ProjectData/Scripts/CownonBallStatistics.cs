@@ -16,6 +16,7 @@ public class CownonBallStatistics : ScriptableObject
     public float initialScale;
     public float finalScale;
 
+    public float timeToScorreggia;
 
     [Space]
     public AnimationCurve movementCurve;
