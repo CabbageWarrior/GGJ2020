@@ -81,6 +81,8 @@ public class TimerManager : MonoBehaviour
 
     public static void AddPoint(int value = 1)
     {
+        if (GAME_OVER)
+            return;
         currentPoints += value;
         TimerManager.Instance.UpdateScore();
     }
