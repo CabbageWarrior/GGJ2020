@@ -88,10 +88,10 @@ public class FadePanelsController : MonoBehaviour
             {
                 currentTime += Time.deltaTime;
 
-                apLeft.x = Mathf.Lerp(leftCloseScreenX, leftOpenScreenX, currentTime / movementTime);
+                apLeft.x = Mathf.Lerp(1080, 0, currentTime / movementTime);
                 leftPanel.anchoredPosition = apLeft;
 
-                apRight.x = Mathf.Lerp(rightCloseScreenX, rightOpenScreenX, currentTime / movementTime);
+                apRight.x = Mathf.Lerp(-1080, 0, currentTime / movementTime);
                 rightPanel.anchoredPosition = apRight;
 
                 yield return null;
@@ -112,10 +112,10 @@ public class FadePanelsController : MonoBehaviour
             {
                 currentTime += Time.deltaTime;
 
-                apLeft.x = Mathf.Lerp(leftOpenScreenX, leftCloseScreenX, currentTime / movementTime);
+                apLeft.x = Mathf.Lerp(0, 1080, currentTime / movementTime);
                 leftPanel.anchoredPosition = apLeft;
 
-                apRight.x = Mathf.Lerp(rightOpenScreenX, rightCloseScreenX, currentTime / movementTime);
+                apRight.x = Mathf.Lerp(0, -1080, currentTime / movementTime);
                 rightPanel.anchoredPosition = apRight;
 
                 yield return null;
