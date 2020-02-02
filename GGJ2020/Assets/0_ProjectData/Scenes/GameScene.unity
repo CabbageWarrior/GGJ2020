@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -142,7 +142,10 @@ MonoBehaviour:
   gameTime: 60
   trumpPoints: 2
   timer: {fileID: 650617135}
-  points: {fileID: 773563548}
+  timeBonus: {fileID: 773563548}
+  points: {fileID: 1725569662}
+  endScreenPoints: {fileID: 108793173}
+  endScreenScoreText: {fileID: 744745929}
   outline: {fileID: 773563549}
   pointsScaleCurve:
     serializedVersion: 2
@@ -234,6 +237,17 @@ MonoBehaviour:
       - m_Target: {fileID: 647046231}
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 20106931}
+        m_MethodName: CheckHighScore
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -938,6 +952,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6923115904562810119, guid: 4eb9c00aa7820d74592c60813c4caf8c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -19.599854
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4eb9c00aa7820d74592c60813c4caf8c, type: 3}
@@ -1723,7 +1742,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 5.56e-42, y: 1.04e-43, z: 0.0009095581, w: 0}
+  m_BoundingSphereOverride: {x: 5.83e-43, y: -4.7168924e+21, z: 5.82e-43, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -1775,8 +1794,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 111}
-  m_SizeDelta: {x: 0, y: 300}
+  m_AnchoredPosition: {x: 16.010014, y: 111}
+  m_SizeDelta: {x: -110.37997, y: 297.83}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &744745929
 MonoBehaviour:
@@ -1792,7 +1811,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1800,7 +1819,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 49f24554abb984e40afd333322d0a45e, type: 3}
     m_FontSize: 168
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 0
     m_MaxSize: 300
     m_Alignment: 4
@@ -1809,7 +1828,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Score
+  m_Text: New High Score!!!
 --- !u!222 &744745930
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2970,6 +2989,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadePanelsController: {fileID: 910119896}
+  endGamePanel: {fileID: 647046231}
   isPaused: 0
 --- !u!4 &1648314487
 Transform:
@@ -3260,6 +3280,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1684913708}
   m_CullTransparentMesh: 0
+--- !u!114 &1725569662 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6581666628467692149, guid: 4eb9c00aa7820d74592c60813c4caf8c,
+    type: 3}
+  m_PrefabInstance: {fileID: 219125090}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1747556551
 GameObject:
   m_ObjectHideFlags: 0
@@ -3586,6 +3618,17 @@ MonoBehaviour:
       - m_Target: {fileID: 1648314486}
         m_MethodName: Replay
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 647046231}
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

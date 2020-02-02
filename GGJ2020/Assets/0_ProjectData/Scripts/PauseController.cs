@@ -7,11 +7,16 @@ public class PauseController : MonoBehaviour
 {
     public static PauseController Instance = null;
     public FadePanelsController fadePanelsController = default;
+    public GameObject endGamePanel;
     public bool isPaused = false;
 
     private void Awake()
     {
         Instance = this;
+    }
+    private void Start()
+    {
+        endGamePanel.SetActive(false);
     }
 
     public void SetPause(bool paused)
