@@ -95,6 +95,7 @@ public class Trump : MonoBehaviour
         rb.AddTorque(Random.Range(-300, 300));
 
         TimerManager.Instance.AddTrumpPoints();
+        audioSource.Stop();
     }
 
     float spawnTimer = 0;
