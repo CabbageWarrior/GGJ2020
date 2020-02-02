@@ -44,7 +44,7 @@ public class Mooovment : MonoBehaviour
 
         Vector3 offset = UnityEngine.Random.insideUnitCircle * shakeAmount;
 
-        if(curveT > 0.25f && !gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("ReverseAiming") && !gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("CowScalcing"))
+        if (curveT > 0.25f && !gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("ReverseAiming") && !gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("CowScalcing"))
         {
             gretaAnimator.Play("ReverseAiming");
         }
@@ -59,66 +59,75 @@ public class Mooovment : MonoBehaviour
         //Debug.Log("Mouse x: " + Input.GetAxis("HorizontalCursorMooovement") + 
         //    " y: " + Input.GetAxis("HorizontalCursorMooovement"));
 
-        if (Input.GetMouseButtonDown(0) && gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+        if (!PauseController.Instance.isPaused)
+        {
+            if (Input.GetMouseButtonDown(0) && gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+            {
+                CrosshairPivot.transform.localPosition = Vector3.zero;
+                gretaAnimator.Play("Aiming");
+                //AudioManager.Instance.PlaySfx(1);
+                shakeTimer = 0;
+
+                if (!TimerManager.GAME_OVER)
+                    TimerManager.Instance.StartTimer();
+            }
+            else if (Input.GetMouseButton(0) && (gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("Aiming")
+                    || gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("CowScalcing") || gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("ReverseAiming")))
+            {
+                Vector3 mouseInput = new Vector3(Input.GetAxis("HorizontalCursorMooovement"),
+                                                 Input.GetAxis("VerticalCursorMooovement"), 0);
+
+                Vector3 currentCrosshairPivotPosition = CrosshairPivot.transform.position;
+                Vector3 targetPosition = currentCrosshairPivotPosition - mouseInput * mooovementSpeed;
+
+                //Debug.Log("Target position: " + targetPosition + "viewport botLeft corner: " + Camera.main.ViewportToWorldPoint(Vector3.forward)
+                //    + " Target to viewport pos: " + Camera.main.WorldToViewportPoint(targetPosition));
+
+                //Debug.Log("Clamped position: " + ClampVectorInScreen(targetPosition));
+
+                // process position, clamp between screen borderzzz, apply mucca shake!
+                shakeTimer += Time.deltaTime;
+                targetPosition = ApplyShake(targetPosition, (shakeTimer / currentProjectileStats.loopTime) % 1);
+
+                targetPosition = ClampVectorInScreen(targetPosition);
+
+                CrosshairPivot.transform.position = targetPosition;
+            }
+            else if (Input.GetMouseButtonUp(0) && (gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("Aiming")
+                    || gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("CowScalcing") || gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("ReverseAiming")))
+            {
+                // shoot cow lol
+                OnCowShot?.Invoke(CrosshairPivot.transform.position);
+                CownonBallController cowThrown = Instantiate(currentProjectile);
+
+                if (HolesManager.Instance.currentHole != null)
+                {
+                    cowThrown.ShootCow(this.transform.position, HolesManager.Instance.currentHole.position,
+                        currentProjectileStats, HolesManager.Instance.currentHole);
+                }
+                else
+                {
+                    cowThrown.ShootCow(this.transform.position, CrosshairPivot.transform.position,
+                        currentProjectileStats, HolesManager.Instance.currentHole);
+                }
+
+
+                CrosshairPivot.transform.localPosition = Vector3.zero;
+
+                gretaAnimator.Play("Throwing");
+                AudioManager.Instance.PlaySfx(2);
+                AudioManager.Instance.PlaySfx(9, 0.2f);
+                OnCowIngropped?.Invoke();
+                movingCow.Play();
+
+                Debug.Log("<color=yellow>Mucca is being shot! </color>");
+            }
+        }
+        else // Is Paused
         {
             CrosshairPivot.transform.localPosition = Vector3.zero;
-            gretaAnimator.Play("Aiming");
-            //AudioManager.Instance.PlaySfx(1);
-            shakeTimer = 0;
-
-            if(!TimerManager.GAME_OVER)
-                TimerManager.Instance.StartTimer();
-        }
-        else if (Input.GetMouseButton(0) && (gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("Aiming")
-                || gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("CowScalcing") || gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("ReverseAiming")))
-        {
-            Vector3 mouseInput = new Vector3(Input.GetAxis("HorizontalCursorMooovement"),
-                                             Input.GetAxis("VerticalCursorMooovement"), 0);
-
-            Vector3 currentCrosshairPivotPosition = CrosshairPivot.transform.position;
-            Vector3 targetPosition = currentCrosshairPivotPosition - mouseInput * mooovementSpeed;
-
-            //Debug.Log("Target position: " + targetPosition + "viewport botLeft corner: " + Camera.main.ViewportToWorldPoint(Vector3.forward)
-            //    + " Target to viewport pos: " + Camera.main.WorldToViewportPoint(targetPosition));
-
-            //Debug.Log("Clamped position: " + ClampVectorInScreen(targetPosition));
-
-            // process position, clamp between screen borderzzz, apply mucca shake!
-            shakeTimer += Time.deltaTime;
-            targetPosition = ApplyShake(targetPosition, (shakeTimer / currentProjectileStats.loopTime) % 1);
-
-            targetPosition = ClampVectorInScreen(targetPosition);
-
-            CrosshairPivot.transform.position = targetPosition;
-        }
-        else if (Input.GetMouseButtonUp(0) && (gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("Aiming")
-                || gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("CowScalcing") || gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("ReverseAiming")))
-        {
-            // shoot cow lol
-            OnCowShot?.Invoke(CrosshairPivot.transform.position);
-            CownonBallController cowThrown = Instantiate(currentProjectile);
-
-            if (HolesManager.Instance.currentHole != null)
-            {
-                cowThrown.ShootCow(this.transform.position, HolesManager.Instance.currentHole.position,
-                    currentProjectileStats, HolesManager.Instance.currentHole);
-            }
-            else
-            {
-                cowThrown.ShootCow(this.transform.position, CrosshairPivot.transform.position,
-                    currentProjectileStats, HolesManager.Instance.currentHole);
-            }
-
-
-            CrosshairPivot.transform.localPosition = Vector3.zero;
-
-            gretaAnimator.Play("Throwing");
-            AudioManager.Instance.PlaySfx(2);
-            AudioManager.Instance.PlaySfx(9, 0.2f);
-            OnCowIngropped?.Invoke();
-            movingCow.Play();
-
-            Debug.Log("<color=yellow>Mucca is being shot! </color>");
+            if (!gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+                gretaAnimator.Play("Idle");
         }
     }
 }
