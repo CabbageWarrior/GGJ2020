@@ -8,6 +8,7 @@ public class Mooovment : MonoBehaviour
     public float mooovementSpeed = 5.0f;
     public GameObject CrosshairPivot;
     public Animation movingCow;
+    public Animation scorreggiaSmoke;
     public Animator gretaAnimator;
 
     public CownonBallController currentProjectile;
@@ -17,6 +18,8 @@ public class Mooovment : MonoBehaviour
     public static Action OnCowIngropped;
 
     private bool isGameOverTriggered = false;
+
+    float scorreggiaTimer;
 
     private Vector3 ClampVectorInScreen(Vector3 position)
     {
@@ -69,7 +72,7 @@ public class Mooovment : MonoBehaviour
                 gretaAnimator.Play("Aiming");
                 //AudioManager.Instance.PlaySfx(1);
                 shakeTimer = 0;
-
+                scorreggiaTimer = 0;
                 if (!TimerManager.GAME_OVER)
                 {
                     Trump.Instance.EnableTrump();
@@ -77,7 +80,7 @@ public class Mooovment : MonoBehaviour
                 }
             }
             else if (Input.GetMouseButton(0) && (gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("Aiming")
-                    || gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("CowScalcing") || gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("ReverseAiming")))
+                    || gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("CowScalcing") || gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("ReverseAiming")) && scorreggiaTimer < currentProjectileStats.timeToScorreggia)
             {
                 Vector3 mouseInput = new Vector3(Input.GetAxis("HorizontalCursorMooovement"),
                                                  Input.GetAxis("VerticalCursorMooovement"), 0);
@@ -92,14 +95,19 @@ public class Mooovment : MonoBehaviour
 
                 // process position, clamp between screen borderzzz, apply mucca shake!
                 shakeTimer += Time.deltaTime;
+                scorreggiaTimer += Time.deltaTime;
+                
+
                 targetPosition = ApplyShake(targetPosition, (shakeTimer / currentProjectileStats.loopTime) % 1);
 
                 targetPosition = ClampVectorInScreen(targetPosition);
 
                 CrosshairPivot.transform.position = targetPosition;
             }
-            else if (Input.GetMouseButtonUp(0) && (gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("Aiming")
-                    || gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("CowScalcing") || gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("ReverseAiming")))
+            else if ((Input.GetMouseButtonUp(0) && (gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("Aiming")
+                    || gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("CowScalcing") 
+                    || gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("ReverseAiming"))) 
+                    || scorreggiaTimer >= currentProjectileStats.timeToScorreggia)
             {
                 // shoot cow lol
                 OnCowShot?.Invoke(CrosshairPivot.transform.position);
@@ -124,7 +132,12 @@ public class Mooovment : MonoBehaviour
                 AudioManager.Instance.PlaySfx(9, 0.2f);
                 OnCowIngropped?.Invoke();
                 movingCow.Play();
-
+                if (scorreggiaTimer >= currentProjectileStats.timeToScorreggia)
+                { 
+                    AudioManager.Instance.PlaySfx(3);
+                    scorreggiaTimer = 0;
+                    scorreggiaSmoke.Play();
+                }
                 Debug.Log("<color=yellow>Mucca is being shot! </color>");
             }
         }
