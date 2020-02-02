@@ -181,6 +181,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 74d5c851b4834d64d963340dd134f6ab, type: 3}
   - {fileID: 21300000, guid: 375fab8644ea1264eabe89c91077f2b7, type: 3}
   - {fileID: 21300000, guid: 4f3caf45f75ab7d47b313ecc88e19ff4, type: 3}
+  - {fileID: 21300000, guid: 2133d642725d88c4f93a57cb444a991f, type: 3}
+  - {fileID: 21300000, guid: daec499a79d721d4eac598a5ea46418e, type: 3}
+  - {fileID: 21300000, guid: 69a1ce86b4143b94ab7e0ed62a530951, type: 3}
   StuckSprite:
   - {fileID: 21300000, guid: 69cea8212c6e4834fa3f767cb1c33c2a, type: 3}
   - {fileID: 21300000, guid: 0e01fae3c0d80dc40ae9b62536f33943, type: 3}
