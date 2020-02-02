@@ -52,10 +52,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftPanel: {fileID: 7068562286210214417}
   leftOpenViewportX: -1
-  leftCloseViewportX: 0
+  leftCloseViewportX: -0.25
   rightPanel: {fileID: 7068562285526848483}
   rightOpenViewportX: 1
-  rightCloseViewportX: 0
+  rightCloseViewportX: 0.25
   movementTime: 0.5
   positionOnSetup: 1
 --- !u!1 &7068562285526848482
@@ -93,7 +93,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 1378, y: 0}
-  m_SizeDelta: {x: 1080, y: 1920}
+  m_SizeDelta: {x: 1080, y: 3000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7068562285526848481
 CanvasRenderer:
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -166,7 +166,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -1244, y: 0}
-  m_SizeDelta: {x: 1080, y: 1920}
+  m_SizeDelta: {x: 1080, y: 3000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7068562286210214423
 CanvasRenderer:
@@ -194,7 +194,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1

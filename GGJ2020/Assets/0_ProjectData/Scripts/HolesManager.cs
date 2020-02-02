@@ -74,6 +74,7 @@ public class HolesManager : MonoBehaviour
 
         holes.Clear();
         StartCoroutine(StartNewHoleRoundAfterDelay());
+        TimerManager.AddPoint(5);
     }
 
     IEnumerator StartNewHoleRoundAfterDelay()

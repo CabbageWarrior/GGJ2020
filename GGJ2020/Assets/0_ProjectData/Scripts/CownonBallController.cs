@@ -50,6 +50,8 @@ public class CownonBallController : MonoBehaviour
             yield return null;
         }
 
+        
+
         if (hole != null)
         {
             if (!hole.busy)
@@ -58,6 +60,7 @@ public class CownonBallController : MonoBehaviour
                 hole.occowpied = this;
                 hole.instance.cow = this.GetComponent<SpriteRenderer>();
                 this.GetComponent<SpriteRenderer>().sortingOrder = -10;
+                TimerManager.AddPoint();
             }
             else
             {
@@ -71,13 +74,29 @@ public class CownonBallController : MonoBehaviour
                 hole.occowpied.GetComponent<SpriteRenderer>().sortingOrder = -10;
                 hole.occowpied.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-200, 200), Random.Range(-200, 200)));
                 hole.occowpied = null;
+                AudioManager.Instance.PlaySfx(5);
+                TimerManager.RemovePoint();
             }
+
             HolesManager.Instance.CowReachedHole(hole);
+            timer = 0;
+            time = 0.8f;
+            Vector3 cachedScale = this.transform.localScale;
+            while (timer < time)
+            {
+                timer += Time.deltaTime;
+
+                transform.localScale = Vector3.LerpUnclamped(cachedScale, cachedScale * 1.5f,
+                    cownonBallStatistics.insertionCurve.Evaluate(timer / time));               
+
+                yield return null;
+            }
         }
         else
         {
             HolesManager.Instance.AddNewHole(targetPosition);
             this.GetComponent<Rigidbody2D>().simulated = true;
+            TimerManager.RemovePoint();
         }
     }
 }

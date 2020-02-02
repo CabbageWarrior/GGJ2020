@@ -126,20 +126,53 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 1
-      outSlope: 1
+      inSlope: 0.94509655
+      outSlope: 0.94509655
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.33333334
     - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 1
+      time: 1.055542
+      value: 0.9975891
+      inSlope: 0.94509655
+      outSlope: 0.94509655
       tangentMode: 34
       weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  insertionCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.0023809522
+      value: 0.14964981
+      inSlope: 3.5086446
+      outSlope: 3.5086446
+      tangentMode: 0
+      weightedMode: 0
       inWeight: 0
+      outWeight: 0.073286206
+    - serializedVersion: 3
+      time: 0.17089057
+      value: 0.5427681
+      inSlope: -0.8570067
+      outSlope: -0.8570067
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.042407025
+    - serializedVersion: 3
+      time: 0.5974565
+      value: 0.0009173155
+      inSlope: -0.20201574
+      outSlope: -0.20201574
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.050854094
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -148,6 +181,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 74d5c851b4834d64d963340dd134f6ab, type: 3}
   - {fileID: 21300000, guid: 375fab8644ea1264eabe89c91077f2b7, type: 3}
   - {fileID: 21300000, guid: 4f3caf45f75ab7d47b313ecc88e19ff4, type: 3}
+  - {fileID: 21300000, guid: 2133d642725d88c4f93a57cb444a991f, type: 3}
+  - {fileID: 21300000, guid: daec499a79d721d4eac598a5ea46418e, type: 3}
+  - {fileID: 21300000, guid: 69a1ce86b4143b94ab7e0ed62a530951, type: 3}
   StuckSprite:
   - {fileID: 21300000, guid: 69cea8212c6e4834fa3f767cb1c33c2a, type: 3}
   - {fileID: 21300000, guid: 0e01fae3c0d80dc40ae9b62536f33943, type: 3}

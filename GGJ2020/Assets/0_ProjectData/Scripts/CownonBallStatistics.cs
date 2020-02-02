@@ -20,6 +20,7 @@ public class CownonBallStatistics : ScriptableObject
     [Space]
     public AnimationCurve movementCurve;
     public AnimationCurve scaleCurve;
+    public AnimationCurve insertionCurve;
 
     [Space]
     public Sprite[] flyingSprite;
