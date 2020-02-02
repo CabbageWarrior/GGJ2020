@@ -20,6 +20,9 @@ public class Trump : MonoBehaviour
 
     private bool enabled;
 
+    public AudioSource audioSource;
+    public AnimationCurve musicFadeCurve;
+
     Coroutine flyCo;
     private void Awake()
     {
@@ -56,6 +59,9 @@ public class Trump : MonoBehaviour
 
         Vector3 offset = new Vector2(0, Random.Range(0, 4.5f));
 
+        audioSource.time = 0;
+        audioSource.Play();
+
         initialPos += offset;
         finalPos += offset;
 
@@ -65,8 +71,10 @@ public class Trump : MonoBehaviour
         {
             timer += Time.deltaTime;
             transform.position = Vector3.Lerp(initialPos, finalPos, timer / timeToReachDestination);
+            audioSource.volume = Mathf.Lerp(0, 1, musicFadeCurve.Evaluate(timer / timeToReachDestination));
             yield return null;
         }
+        audioSource.Stop();
     }
 
     public void HitTrump()
