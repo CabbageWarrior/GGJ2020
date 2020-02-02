@@ -16,6 +16,8 @@ public class Mooovment : MonoBehaviour
     public static Action<Vector3> OnCowShot;
     public static Action OnCowIngropped;
 
+    private bool isGameOverTriggered = false;
+
     private Vector3 ClampVectorInScreen(Vector3 position)
     {
         Vector3 viewportPosition = Camera.main.WorldToViewportPoint(position);
@@ -59,7 +61,7 @@ public class Mooovment : MonoBehaviour
         //Debug.Log("Mouse x: " + Input.GetAxis("HorizontalCursorMooovement") + 
         //    " y: " + Input.GetAxis("HorizontalCursorMooovement"));
 
-        if (!PauseController.Instance.isPaused)
+        if (!PauseController.Instance.isPaused && !TimerManager.GAME_OVER)
         {
             if (Input.GetMouseButtonDown(0) && gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
             {
@@ -123,11 +125,18 @@ public class Mooovment : MonoBehaviour
                 Debug.Log("<color=yellow>Mucca is being shot! </color>");
             }
         }
-        else // Is Paused
+        else // Is Paused or Game Over
         {
             CrosshairPivot.transform.localPosition = Vector3.zero;
             if (!gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
                 gretaAnimator.Play("Idle");
+
+            if (TimerManager.GAME_OVER && !isGameOverTriggered)
+            {
+                isGameOverTriggered = true;
+
+                TimerManager.Instance.OnGameOver?.Invoke();
+            }
         }
     }
 }

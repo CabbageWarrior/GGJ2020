@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class TimerManager : MonoBehaviour
@@ -14,6 +15,8 @@ public class TimerManager : MonoBehaviour
 
     public AnimationCurve pointsScaleCurve;
     public AnimationCurve pointsAlphaCurve;
+
+    public UnityEvent OnGameOver = default;
 
     public static TimerManager Instance { get; set; }
 
