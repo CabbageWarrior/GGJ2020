@@ -210,71 +210,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &8513025503327409753
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5943142533867653412}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2f2048cb1cd09c4495de1b85236000c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprite: {fileID: 3777643404644064918}
-  rb: {fileID: 1306542952}
-  anim: {fileID: 8050676018222621878}
-  fallSprite: {fileID: 21300000, guid: c7f5666adc9e4484985521591dc0fbf9, type: 3}
-  A: {fileID: 6082391188697969477}
-  B: {fileID: 4175958872453543128}
-  timeToReachDestination: 6
-  spawnDelay: 0
-  trumpFrequencySecondsMin: 5
-  trumpFrequencySecondsMax: 10
-  audioSource: {fileID: 2431630311341902044}
-  musicFadeCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 1.5208086
-      outSlope: 1.5208086
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.52404785
-      value: 0.79697645
-      inSlope: 0.00001345457
-      outSlope: 0.00001345457
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.16244785
-    - serializedVersion: 3
-      time: 0.65151066
-      value: 0.7968468
-      inSlope: -0.033874467
-      outSlope: -0.033874467
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.21576034
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: -2.8042517
-      outSlope: -2.8042517
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.038870815
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!82 &2431630311341902044
 AudioSource:
   m_ObjectHideFlags: 0
@@ -368,6 +303,71 @@ AudioSource:
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &8513025503327409753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5943142533867653412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2f2048cb1cd09c4495de1b85236000c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 3777643404644064918}
+  rb: {fileID: 1306542952}
+  anim: {fileID: 8050676018222621878}
+  fallSprite: {fileID: 21300000, guid: c7f5666adc9e4484985521591dc0fbf9, type: 3}
+  A: {fileID: 6082391188697969477}
+  B: {fileID: 4175958872453543128}
+  timeToReachDestination: 6
+  spawnDelay: 0
+  trumpFrequencySecondsMin: 5
+  trumpFrequencySecondsMax: 10
+  audioSource: {fileID: 2431630311341902044}
+  musicFadeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1.5208086
+      outSlope: 1.5208086
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.52404785
+      value: 0.79697645
+      inSlope: 0.00001345457
+      outSlope: 0.00001345457
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.16244785
+    - serializedVersion: 3
+      time: 0.65151066
+      value: 0.7968468
+      inSlope: -0.033874467
+      outSlope: -0.033874467
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.21576034
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -2.8042517
+      outSlope: -2.8042517
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.038870815
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -465,7 +465,7 @@ PrefabInstance:
     - target: {fileID: 4567860804459235012, guid: 9b71757b1d53133449cad3d3b07634cd,
         type: 3}
       propertyPath: m_SortingOrder
-      value: -11
+      value: -9
       objectReference: {fileID: 0}
     - target: {fileID: 6445468275032936822, guid: 9b71757b1d53133449cad3d3b07634cd,
         type: 3}
