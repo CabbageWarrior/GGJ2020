@@ -25,6 +25,7 @@ public class PauseController : MonoBehaviour
         if (paused)
         {
             isPaused = true;
+            Trump.Instance.DisableTrump();
         }
         else
         {
@@ -34,6 +35,7 @@ public class PauseController : MonoBehaviour
             {
                 yield return null; // Skip a frame
                 isPaused = false;
+                Trump.Instance.EnableTrump();
             }
         }
     }

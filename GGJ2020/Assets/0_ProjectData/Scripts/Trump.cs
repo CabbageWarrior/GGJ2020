@@ -35,6 +35,11 @@ public class Trump : MonoBehaviour
         enabled = true;
     }
 
+    public void DisableTrump()
+    {
+        enabled = false;
+    }
+
     private void SpawnTrump()
     {
         bool left = Random.value > 0.5f;
@@ -69,6 +74,17 @@ public class Trump : MonoBehaviour
 
         while(timer < timeToReachDestination)
         {
+            while(!enabled)
+            {
+                audioSource.Pause();
+                yield return null;
+            }
+
+            if(!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+
             timer += Time.deltaTime;
             transform.position = Vector3.Lerp(initialPos, finalPos, timer / timeToReachDestination);
             audioSource.volume = Mathf.Lerp(0, 1, musicFadeCurve.Evaluate(timer / timeToReachDestination));

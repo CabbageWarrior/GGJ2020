@@ -157,6 +157,7 @@ public class TimerManager : MonoBehaviour
             enabled = false;
             GAME_OVER = true;
             timer.text = "" + 0;
+            Trump.Instance.DisableTrump();
         }
     }
 }
