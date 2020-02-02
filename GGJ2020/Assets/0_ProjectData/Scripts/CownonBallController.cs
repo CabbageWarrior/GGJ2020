@@ -82,6 +82,8 @@ public class CownonBallController : MonoBehaviour
                 hole.instance.cow = this.GetComponent<SpriteRenderer>();
                 this.GetComponent<SpriteRenderer>().sortingOrder = -10;
                 TimerManager.AddPoint();
+                AudioManager.Instance.PlaySfx(5);
+
             }
             else
             {
@@ -95,7 +97,7 @@ public class CownonBallController : MonoBehaviour
                 hole.occowpied.GetComponent<SpriteRenderer>().sortingOrder = -10;
                 hole.occowpied.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-200, 200), Random.Range(-200, 200)));
                 hole.occowpied = null;
-                AudioManager.Instance.PlaySfx(5);
+                AudioManager.Instance.PlaySfx(4);
                 TimerManager.RemovePoint();
             }
 
