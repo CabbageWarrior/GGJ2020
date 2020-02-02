@@ -41,7 +41,7 @@ public class PauseController : MonoBehaviour
     public void Replay()
     {
         fadePanelsController.OnClose = () => {
-            SceneManager.LoadScene(1, LoadSceneMode.Single);
+            SceneManager.LoadScene(2, LoadSceneMode.Single);
         };
         fadePanelsController.Close();
     }
@@ -49,7 +49,7 @@ public class PauseController : MonoBehaviour
     public void ReturnToMenu()
     {
         fadePanelsController.OnClose = () => {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
         };
         fadePanelsController.Close();
     }
