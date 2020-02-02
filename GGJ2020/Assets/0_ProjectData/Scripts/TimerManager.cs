@@ -89,6 +89,8 @@ public class TimerManager : MonoBehaviour
 
     public static void RemovePoint()
     {
+        if (GAME_OVER)
+            return;
         currentPoints--;
         TimerManager.Instance.UpdateScore();
     }
