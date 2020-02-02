@@ -627,6 +627,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 474889920}
   m_CullTransparentMesh: 0
+--- !u!82 &519123542 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3093061683587383754, guid: 8a1d9e273da4a3542b258c6ba0d9b271,
+    type: 3}
+  m_PrefabInstance: {fileID: 6497845817180557780}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &564826413
 GameObject:
   m_ObjectHideFlags: 0
@@ -2736,6 +2742,17 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 519123542}
+        m_MethodName: set_volume
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.15
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2

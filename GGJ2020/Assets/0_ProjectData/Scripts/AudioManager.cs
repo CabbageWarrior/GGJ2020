@@ -9,23 +9,14 @@ public class AudioManager : MonoBehaviour
 
     private AudioSource source;
 
-    public AudioClip[] music;
-    public AudioClip[] sfx;
-    public AudioClip[] cowSound;
-    [Space]
     public AudioSource[] musicAudioSources = null;
     public AudioSource[] sfxAudioSources = null;
     public AudioSource[] cowsAudioSources = null;
-
+    public AudioSource[] jinglesAudioSources = null;
 
     private void Awake()
     {
         instance = this;
-    }
-
-    void Start()
-    {
-        source = GetComponent<AudioSource>();
     }
 
     public void PlayMusic(int audio)
@@ -49,5 +40,10 @@ public class AudioManager : MonoBehaviour
     {
         //source.PlayOneShot(cowSound[audio]);
         cowsAudioSources[audio].Play();
+    }
+
+    public void PlayJingle(int audio)
+    {
+        jinglesAudioSources[audio].Play();
     }
 }

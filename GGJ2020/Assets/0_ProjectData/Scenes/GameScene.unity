@@ -2351,6 +2351,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadePanelsController: {fileID: 910119896}
+  isPaused: 0
 --- !u!4 &1648314487
 Transform:
   m_ObjectHideFlags: 0

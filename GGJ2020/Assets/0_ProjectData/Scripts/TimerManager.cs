@@ -46,6 +46,11 @@ public class TimerManager : MonoBehaviour
         currentPoints = 0;
     }
 
+    private void Start()
+    {
+        AudioManager.Instance.PlayMusic(1);
+    }
+
     public void StartTimer()
     {
         enabled = true;
