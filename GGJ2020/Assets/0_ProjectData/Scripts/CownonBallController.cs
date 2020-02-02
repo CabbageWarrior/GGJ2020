@@ -6,7 +6,7 @@ public class CownonBallController : MonoBehaviour
 {
     public CownonBallStatistics cownonBallStatistics;
     private Hole hole;
-
+    public LayerMask trumpLayer;
     private void Awake()
     {
         this.GetComponent<SpriteRenderer>().sprite = cownonBallStatistics.flyingSprite[Random.Range(0, cownonBallStatistics.flyingSprite.Length)];
@@ -50,7 +50,28 @@ public class CownonBallController : MonoBehaviour
             yield return null;
         }
 
-        
+        var trump = Physics2D.OverlapCircle(targetPosition, 0.5f, trumpLayer);
+
+        float trumpRadius = 1f;
+        Vector2 trumpPosition = new Vector2(Trump.Instance.transform.position.x, Trump.Instance.transform.position.y);
+        float cowTrumpDistance = Vector2.Distance(trumpPosition, transform.position);
+
+        float radiusesSum = trumpRadius + cownonBallStatistics.finalScale;
+
+        Debug.Log("Radiuses sum: " + radiusesSum + " trump rad: " + trumpRadius + 
+            " cow rad: " + cownonBallStatistics.finalScale);
+
+        if(cowTrumpDistance < radiusesSum)
+        {
+            this.GetComponent<Rigidbody2D>().simulated = true;
+            this.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-200, 200), Random.Range(-200, 200)));
+            this.GetComponent<Rigidbody2D>().AddTorque(rotationSpeed);
+            this.GetComponent<SpriteRenderer>().sortingOrder = -10;
+            AudioManager.Instance.PlaySfx(5);
+
+            Trump.Instance.HitTrump();
+            yield break;
+        }
 
         if (hole != null)
         {

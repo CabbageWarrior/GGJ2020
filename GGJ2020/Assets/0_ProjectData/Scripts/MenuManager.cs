@@ -27,7 +27,7 @@ public class MenuManager : MonoBehaviour
         Debug.Log("Play");
         fadePanelsController.OnClose += () =>
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(2);
         };
         fadePanelsController.Close();
     }

@@ -97,6 +97,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cownonBallStatistics: {fileID: 11400000, guid: 8d5f293e71640eb48881c86e917692ca,
     type: 2}
+  trumpLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!50 &7240558934163233451
 Rigidbody2D:
   serializedVersion: 4

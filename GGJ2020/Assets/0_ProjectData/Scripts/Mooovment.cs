@@ -74,7 +74,10 @@ public class Mooovment : MonoBehaviour
                 shakeTimer = 0;
                 scorreggiaTimer = 0;
                 if (!TimerManager.GAME_OVER)
+                {
+                    Trump.Instance.EnableTrump();
                     TimerManager.Instance.StartTimer();
+                }
             }
             else if (Input.GetMouseButton(0) && (gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("Aiming")
                     || gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("CowScalcing") || gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("ReverseAiming")) && scorreggiaTimer < currentProjectileStats.timeToScorreggia)
