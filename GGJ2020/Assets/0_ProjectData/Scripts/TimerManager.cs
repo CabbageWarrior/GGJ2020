@@ -10,7 +10,8 @@ public class TimerManager : MonoBehaviour
     public float trumpPoints = 2;
 
     public Text timer;
-    public Text points;
+    public Text timeBonus;
+    public Text points, endScreenPoints, endScreenScoreText;
     public Outline outline;
 
     public AnimationCurve pointsScaleCurve;
@@ -36,7 +37,7 @@ public class TimerManager : MonoBehaviour
     {
         Instance = this;
         timer.text = "" + (int)gameTime;
-        initialPointsColor = points.color;
+        initialPointsColor = timeBonus.color;
         finalPointsColor = initialPointsColor;
         finalPointsColor.a = 0;
 
@@ -45,8 +46,10 @@ public class TimerManager : MonoBehaviour
         finalOutlineColor.a = 0;
 
         outline.effectColor = finalOutlineColor;
-        points.color = finalPointsColor;
+        timeBonus.color = finalPointsColor;
         currentPoints = 0;
+        UpdateScore();
+
     }
 
     private void Start()
@@ -62,13 +65,13 @@ public class TimerManager : MonoBehaviour
     [ContextMenu("trump this bitch up")]
     public void AddTrumpPoints()
     {
-        if (GAME_OVER) 
+        if (GAME_OVER)
             return;
 
         gameTime += trumpPoints;
-        points.text = "+" + trumpPoints;
+        timeBonus.text = "+" + trumpPoints;
 
-        if(co != null)
+        if (co != null)
         {
             StopCoroutine(co);
         }
@@ -77,16 +80,37 @@ public class TimerManager : MonoBehaviour
 
     public static void AddPoint(int value = 1)
     {
-        currentPoints+= value;
+        currentPoints += value;
+        TimerManager.Instance.UpdateScore();
     }
 
     public static void RemovePoint()
     {
         currentPoints--;
+        TimerManager.Instance.UpdateScore();
+    }
+
+    void UpdateScore()
+    {
+        points.text = currentPoints.ToString();
+        endScreenPoints.text = currentPoints.ToString();
+    }
+
+    public void CheckHighScore()
+    {
+        if (currentPoints > PlayerPrefs.GetFloat("HighScore"))
+        {
+            endScreenScoreText.text = "New High Score!!!";
+            SavePoints();
+        }
+        else
+        {
+            endScreenScoreText.text = "Score";
+        }
     }
 
     //call then the last screen is up
-    public static void SavePoints()
+    public void SavePoints()
     {
         PlayerPrefs.SetFloat("HighScore", currentPoints);
         PlayerPrefs.Save();
@@ -97,14 +121,14 @@ public class TimerManager : MonoBehaviour
         float timer = 0;
         float time = 2;
 
-        while(timer < time)
+        while (timer < time)
         {
             timer += Time.deltaTime;
 
-            points.transform.localScale = Vector3.Lerp(Vector3.one, Vector3.one * 1.5f,
+            timeBonus.transform.localScale = Vector3.Lerp(Vector3.one, Vector3.one * 1.5f,
                 pointsScaleCurve.Evaluate(timer / time));
 
-            points.color = Color.Lerp(finalPointsColor, initialPointsColor,
+            timeBonus.color = Color.Lerp(finalPointsColor, initialPointsColor,
                 pointsAlphaCurve.Evaluate(timer / time));
 
             outline.effectColor = Color.Lerp(finalOutlineColor, initialOutlineColor,
@@ -126,7 +150,7 @@ public class TimerManager : MonoBehaviour
 
         timer.text = "" + (int)gameTime;
 
-        if(gameTime < 0)
+        if (gameTime < 0)
         {
             enabled = false;
             GAME_OVER = true;
