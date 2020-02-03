@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -410,7 +410,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 49f24554abb984e40afd333322d0a45e, type: 3}
+    m_Font: {fileID: 12800000, guid: 6717cfe9198d1c7419650ca65e857e2f, type: 3}
     m_FontSize: 168
     m_FontStyle: 0
     m_BestFit: 0
@@ -837,13 +837,19 @@ PrefabInstance:
         type: 3}
       propertyPath: m_FontData.m_Font
       value: 
-      objectReference: {fileID: 12800000, guid: 703eba8a0805ba14682e3d51629158f1,
+      objectReference: {fileID: 12800000, guid: 6717cfe9198d1c7419650ca65e857e2f,
         type: 3}
     - target: {fileID: 1835162205555134687, guid: 4eb9c00aa7820d74592c60813c4caf8c,
         type: 3}
       propertyPath: m_FontData.m_FontSize
       value: 150
       objectReference: {fileID: 0}
+    - target: {fileID: 1835162206125010452, guid: 4eb9c00aa7820d74592c60813c4caf8c,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 6717cfe9198d1c7419650ca65e857e2f,
+        type: 3}
     - target: {fileID: 1835162206353982227, guid: 4eb9c00aa7820d74592c60813c4caf8c,
         type: 3}
       propertyPath: m_Name
@@ -964,6 +970,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 6581666628467692149, guid: 4eb9c00aa7820d74592c60813c4caf8c,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 6717cfe9198d1c7419650ca65e857e2f,
+        type: 3}
     - target: {fileID: 6923115904562810119, guid: 4eb9c00aa7820d74592c60813c4caf8c,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1037,6 +1049,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1568686048857032439, guid: d84793caea9e834498b28683050fccce,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d84793caea9e834498b28683050fccce, type: 3}
@@ -1816,7 +1833,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 49f24554abb984e40afd333322d0a45e, type: 3}
+    m_Font: {fileID: 12800000, guid: 6717cfe9198d1c7419650ca65e857e2f, type: 3}
     m_FontSize: 168
     m_FontStyle: 0
     m_BestFit: 1
