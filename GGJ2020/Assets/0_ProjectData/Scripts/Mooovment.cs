@@ -67,7 +67,18 @@ public class Mooovment : MonoBehaviour
 
         if (!PauseController.Instance.isPaused && !TimerManager.GAME_OVER)
         {
-            if (Input.GetMouseButtonDown(0) && gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+            AnimatorStateInfo asi = gretaAnimator.GetCurrentAnimatorStateInfo(0);
+
+            if (asi.IsName("Throwing") || asi.IsName("GrabAnimation"))
+            {
+                if (CrosshairPivot.activeSelf) CrosshairPivot.SetActive(false);
+            }
+            else
+            {
+                if (!CrosshairPivot.activeSelf) CrosshairPivot.SetActive(true);
+            }
+
+            if (Input.GetMouseButtonDown(0) && asi.IsName("Idle"))
             {
                 CrosshairPivot.transform.localPosition = Vector3.zero;
                 gretaAnimator.Play("Aiming");
@@ -80,8 +91,11 @@ public class Mooovment : MonoBehaviour
                     TimerManager.Instance.StartTimer();
                 }
             }
-            else if (Input.GetMouseButton(0) && (gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("Aiming")
-                    || gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("CowScalcing") || gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("ReverseAiming")) && scorreggiaTimer < currentProjectileStats.timeToScorreggia)
+            else if (Input.GetMouseButton(0) && (
+                   asi.IsName("Aiming")
+                || asi.IsName("CowScalcing")
+                || asi.IsName("ReverseAiming")
+            ) && scorreggiaTimer < currentProjectileStats.timeToScorreggia)
             {
                 Vector3 mouseInput = new Vector3(Input.GetAxis("HorizontalCursorMooovement"),
                                                  Input.GetAxis("VerticalCursorMooovement"), 0);
@@ -105,10 +119,11 @@ public class Mooovment : MonoBehaviour
 
                 CrosshairPivot.transform.position = targetPosition;
             }
-            else if ((Input.GetMouseButtonUp(0) && (gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("Aiming")
-                    || gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("CowScalcing")
-                    || gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("ReverseAiming")))
-                    || scorreggiaTimer >= currentProjectileStats.timeToScorreggia)
+            else if ((Input.GetMouseButtonUp(0) && (
+                   asi.IsName("Aiming")
+                || asi.IsName("CowScalcing")
+                || asi.IsName("ReverseAiming")
+            )) || scorreggiaTimer >= currentProjectileStats.timeToScorreggia)
             {
                 // shoot cow lol
                 OnCowShot?.Invoke(CrosshairPivot.transform.position);
