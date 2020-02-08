@@ -8,6 +8,7 @@ public class Mooovment : MonoBehaviour
     public float mooovementSpeed = 5.0f;
     public GameObject CrosshairPivot;
     public Animation movingCow;
+    public float movingCowSecondsToSkip = 1;
     public Animation scorreggiaSmoke;
     public Animator gretaAnimator;
 
@@ -96,7 +97,7 @@ public class Mooovment : MonoBehaviour
                 // process position, clamp between screen borderzzz, apply mucca shake!
                 shakeTimer += Time.deltaTime;
                 scorreggiaTimer += Time.deltaTime;
-                
+
 
                 targetPosition = ApplyShake(targetPosition, (shakeTimer / currentProjectileStats.loopTime) % 1);
 
@@ -105,8 +106,8 @@ public class Mooovment : MonoBehaviour
                 CrosshairPivot.transform.position = targetPosition;
             }
             else if ((Input.GetMouseButtonUp(0) && (gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("Aiming")
-                    || gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("CowScalcing") 
-                    || gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("ReverseAiming"))) 
+                    || gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("CowScalcing")
+                    || gretaAnimator.GetCurrentAnimatorStateInfo(0).IsName("ReverseAiming")))
                     || scorreggiaTimer >= currentProjectileStats.timeToScorreggia)
             {
                 // shoot cow lol
@@ -131,14 +132,23 @@ public class Mooovment : MonoBehaviour
                 AudioManager.Instance.PlaySfx(2);
                 AudioManager.Instance.PlaySfx(9, 0.2f);
                 OnCowIngropped?.Invoke();
-                movingCow.Play();
                 if (scorreggiaTimer >= currentProjectileStats.timeToScorreggia)
-                { 
+                {
                     AudioManager.Instance.PlaySfx(3);
                     scorreggiaTimer = 0;
                     scorreggiaSmoke.Play();
                 }
                 Debug.Log("<color=yellow>Mucca is being shot! </color>");
+
+                StartCoroutine(PlayVacca(movingCowSecondsToSkip));
+
+                IEnumerator PlayVacca(float secToSkip)
+                {
+                    yield return new WaitForSeconds(secToSkip);
+                    movingCow.Play();
+                    yield return null;
+                }
+
             }
         }
         else // Is Paused or Game Over
