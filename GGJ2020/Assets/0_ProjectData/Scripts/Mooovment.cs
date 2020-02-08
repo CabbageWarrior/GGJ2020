@@ -18,6 +18,8 @@ public class Mooovment : MonoBehaviour
     public static Action<Vector3> OnCowShot;
     public static Action OnCowIngropped;
 
+    public float secondsBeforeGameOverPanel = 2f;
+
     private bool isGameOverTriggered = false;
 
     float scorreggiaTimer;
@@ -176,7 +178,15 @@ public class Mooovment : MonoBehaviour
             {
                 isGameOverTriggered = true;
 
-                TimerManager.Instance.OnGameOver?.Invoke();
+
+                StartCoroutine(CallGameOverCoroutine(secondsBeforeGameOverPanel));
+
+                IEnumerator CallGameOverCoroutine(float secBeforeEvent)
+                {
+                    yield return new WaitForSeconds(secBeforeEvent);
+                    TimerManager.Instance.OnGameOver?.Invoke();
+                    yield return null;
+                }
             }
         }
     }
